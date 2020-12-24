@@ -8,7 +8,7 @@ const routes = {
   "/product/:id": ProductScreen,
 };
 
-const router = () => {
+const router = async () => {
   const request = parseRequestUrl();
   const parseUrl =
     (request.resource ? `/${request.resource}` : "/") +
@@ -16,7 +16,7 @@ const router = () => {
     (request.verb ? `/${request.verb}` : "");
     const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
   const main = document.getElementById("bled-store");
-  main.innerHTML = screen.render();
+  main.innerHTML = await screen.render();
 };
 
 window.addEventListener("load", router);
