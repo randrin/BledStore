@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   products: [
     {
       _id: "5baa3bb4-b336-46b6-a772-709f3516ec06",
