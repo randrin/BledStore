@@ -12,6 +12,10 @@ module.exports = {
     rules: {
       'no-console': 0,
       'no-underscore-dangle': 0,
-      'linebreak-style': true
+      'linebreak-style': 0,
+      'import/prefer-default-export': 0,
+      'import/no-unresolved': 0,
+      'arrow-body-style': 0,
+      'import/no-extraneous-dependencies': 0
     },
   };
