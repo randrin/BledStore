@@ -12,6 +12,10 @@ body {
     margin: 0;
 }
 
+.content {
+    padding: 1rem;
+}
+
 a {
     color: #000000;
     text-decoration: none;
