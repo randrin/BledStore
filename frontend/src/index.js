@@ -17,6 +17,7 @@ const router = async () => {
     const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
   const main = document.getElementById("bled-store");
   main.innerHTML = await screen.render();
+  await screen.after_render();
 };
 
 window.addEventListener("load", router);

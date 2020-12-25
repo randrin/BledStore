@@ -17,6 +17,14 @@ a {
     text-decoration: none;
 }
 
+.success {
+    color: #40c040;
+}
+
+.error {
+    color: #c04040;
+}
+
 a:hover {
     color: #f08040;
 }
@@ -158,34 +166,41 @@ footer {
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-  }
-  .details-image {
+}
+
+.details-image {
     flex: 1 1 60rem;
-  }
-  .details-image img {
+}
+
+.details-image img {
     max-width: 60rem;
     width: 100%;
-  }
-  .details-info,
-  .details-action {
+}
+
+.details-info,
+.details-action {
     flex: 1 1 30rem;
-  }
-  .details-info ul,
-  .details-action ul {
+}
+
+.details-info ul,
+.details-action ul {
     padding: 0;
     list-style-type: none;
-  }
-  .details-info h1 {
+}
+
+.details-info h1 {
     font-size: 2rem;
     margin: 0;
-  }
-  .details-info li,
-  .details-action li {
+}
+
+.details-info li,
+.details-action li {
     margin-bottom: 1rem;
-  }
-  .details-action {
+}
+
+.details-action {
     border: 0.1rem #808080 solid;
     border-radius: 0.5rem;
     background-color: #f8f8f8;
     padding: 1rem;
-  }
+}
