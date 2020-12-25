@@ -8,6 +8,7 @@ const routes = {
   "/": HomeScreen,
   "/product/:id": ProductScreen,
   "/cart/:id": CartScreen,
+  "/cart": CartScreen,
 };
 
 const router = async () => {
@@ -22,5 +23,5 @@ const router = async () => {
   await screen.after_render();
 };
 
-window.addEventListener("load", router);
+window.addEventListener('load', router);
 window.addEventListener('hashchange', router);

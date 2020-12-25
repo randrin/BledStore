@@ -18,6 +18,8 @@ module.exports = {
       'arrow-body-style': 0,
       'import/no-extraneous-dependencies': 0,
       'import/extensions': 0,
-      'no-nested-ternary': 0
+      'no-nested-ternary': 0,
+      'no-use-before-define': 0,
+      'no-undef': 0
     },
   };
