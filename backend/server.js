@@ -3,6 +3,7 @@ import cors from "cors";
 import data from "./data";
 import mongoose from 'mongoose';
 import config from "./config";
+import bodyParser from 'body-parser';
 import userRouter from "./routes/userRoutes";
 
 mongoose.connect(config.MONGODB_URL, {
@@ -18,6 +19,7 @@ mongoose.connect(config.MONGODB_URL, {
 
 const app = express();
 app.use(cors());
+app.use(bodyParser.json());
 app.use('/api/users', userRouter);
 
 app.get("/api/products", (req, res) => {
@@ -33,6 +35,11 @@ app.get("/api/product/:id", (req, res) => {
     res.status(404).send({ message: "Product not found." });
   }
 });
+
+app.use((error, req, res, next) => {
+  const status = error.name && error.name === 'ValidationError' ? 400 : 500;
+  res.status(status).send({message: error.message});
+})
 
 app.listen(5000, () => {
   console.log("Server started at http://localhost:5000");
