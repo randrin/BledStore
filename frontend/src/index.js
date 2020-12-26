@@ -4,7 +4,7 @@ import Error404Screen from "./screeens/Error404Screen.js";
 import HomeScreen from "./screeens/HomeScreen.js";
 import ProductScreen from "./screeens/ProductSreen.js";
 import SigninScreen from "./screeens/SigninScreen.js";
-import { parseRequestUrl } from "./utils.js";
+import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 
 const routes = {
   "/": HomeScreen,
@@ -15,6 +15,7 @@ const routes = {
 };
 
 const router = async () => {
+  showLoading();
   const request = parseRequestUrl();
   const parseUrl =
     (request.resource ? `/${request.resource}` : "/") +
@@ -27,6 +28,9 @@ const router = async () => {
   const main = document.getElementById("bled-store");
   main.innerHTML = await screen.render();
   await screen.after_render();
+  setTimeout(() => {
+    hideLoading();
+  }, 1000);
 };
 
 window.addEventListener("load", router);

@@ -1,9 +1,11 @@
 import axios from "axios";
 import Rating from "../components/rating";
 import { apiUrl } from "../config";
+import { hideLoading, showLoading } from "../utils";
 
 const HomeScreen = {
   render: async () => {
+    showLoading();
     const response = await axios({
       url: `${apiUrl}/api/products`,
       headers: {
@@ -13,6 +15,9 @@ const HomeScreen = {
     if (!response || response.statusText !== "OK") {
       return `<div>Error in getting data</div>`;
     }
+    setTimeout(() => {
+      hideLoading();
+    }, 1000);
     const products = response.data;
 
     return `

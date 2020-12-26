@@ -63,6 +63,43 @@ button.primary {
     background-color: #f0c040;
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.overlay>span {
+    background-image: url('../assets/images/loading.gif');
+    background-repeat: no-repeat;
+}
+
+.overlay.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+}
+
+.overlay>div {
+    background-color: #203040;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    max-width: 40rem;
+}
+
+.overlay>div>* {
+    margin: 2rem;
+}
+
 .fw {
     width: 100%;
 }
