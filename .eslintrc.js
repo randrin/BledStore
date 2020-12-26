@@ -21,6 +21,7 @@ module.exports = {
       'no-nested-ternary': 0,
       'no-use-before-define': 0,
       'no-undef': 0,
-      'import/order': 0
+      'import/order': 0,
+      'no-alert': 0
     },
   };

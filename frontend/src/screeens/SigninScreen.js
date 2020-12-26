@@ -1,9 +1,31 @@
+import { signin } from "../api";
+import { setUserInfos, getUserInfos } from "../localStorage";
+
 const SigninScreen = {
-    after_render: () => {},
-    render: () => {
-        return `
+  after_render: () => {
+    document
+      .getElementById("signin-form")
+      .addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const data = await signin({
+          email: document.getElementById("email").value,
+          password: document.getElementById("password").value,
+        });
+        if (data.error) {
+          alert(data.error);
+        } else {
+          setUserInfos(data);
+          document.location.hash = "/";
+        }
+      });
+  },
+  render: () => {
+    if (getUserInfos().name) {
+      document.location.hash = "/";
+    }
+    return `
         <div class="form-container">
-            <div class="signin-form">
+            <form id="signin-form">
                 <ul class="form-items">
                     <li>
                         <h1>Sign-In</h1>
@@ -25,9 +47,9 @@ const SigninScreen = {
                         </div>
                     </li>
                 </ul>
-            </div>
-        </div>`
-    }
-}
+            </form>
+        </div>`;
+  },
+};
 
 export default SigninScreen;

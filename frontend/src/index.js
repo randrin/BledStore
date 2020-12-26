@@ -1,3 +1,4 @@
+import Header from "./components/Header.js";
 import CartScreen from "./screeens/CartScreen.js";
 import Error404Screen from "./screeens/Error404Screen.js";
 import HomeScreen from "./screeens/HomeScreen.js";
@@ -10,7 +11,7 @@ const routes = {
   "/product/:id": ProductScreen,
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
-  "/signin": SigninScreen
+  "/signin": SigninScreen,
 };
 
 const router = async () => {
@@ -19,11 +20,14 @@ const router = async () => {
     (request.resource ? `/${request.resource}` : "/") +
     (request.id ? "/:id" : "") +
     (request.verb ? `/${request.verb}` : "");
-    const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
+  const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
+  const header = document.getElementById("bled-store-header");
+  header.innerHTML = await Header.render();
+  await Header.after_render();
   const main = document.getElementById("bled-store");
   main.innerHTML = await screen.render();
   await screen.after_render();
 };
 
-window.addEventListener('load', router);
-window.addEventListener('hashchange', router);
+window.addEventListener("load", router);
+window.addEventListener("hashchange", router);
