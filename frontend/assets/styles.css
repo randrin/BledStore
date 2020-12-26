@@ -42,14 +42,19 @@ a:hover {
     color: #f08040;
 }
 
+input,
 button {
     font: 1.6rem helvetica;
     padding: 1rem;
     border: 0.1rem #808080 solid;
     border-radius: 0.5rem;
+}
+
+button {
     cursor: pointer;
 }
 
+input:hover,
 button:hover {
     border: 0.1rem #404040 solid;
 }
@@ -283,4 +288,32 @@ footer {
 .cart-list select {
     font-size: 1.3rem;
     padding: 0.5rem;
+}
+
+/* Sigin In */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form-items {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 32rem;
+    border: 0.1rem solid #c0c0c0;
+    list-style-type: none;
+}
+
+.form-items li {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+}
+
+.form-container h1 {
+    font-size: 2.5rem;
 }
