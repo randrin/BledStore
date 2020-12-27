@@ -20,7 +20,7 @@ export const getProduct = async (id) => {
   }
 };
 
-export const signin = async ({email, password}) => {
+export const signin = async ({ email, password }) => {
   try {
     const response = await axios({
       url: `${apiUrl}/api/users/signin`,
@@ -30,19 +30,19 @@ export const signin = async ({email, password}) => {
       },
       data: {
         email,
-        password
-      }
+        password,
+      },
     });
-    if (response.statusText !== 'OK') {
-      throw new Error(response.data.message)
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
     }
     return response.data;
   } catch (error) {
-    return { error: error.response.data.message || error.message}
+    return { error: error.response.data.message || error.message };
   }
-}
+};
 
-export const register = async({email, name, password}) => {
+export const register = async ({ email, name, password }) => {
   try {
     const response = await axios({
       url: `${apiUrl}/api/users/register`,
@@ -53,39 +53,65 @@ export const register = async({email, name, password}) => {
       data: {
         email,
         password,
-        name
-      }
+        name,
+      },
     });
-    if (response.statusText !== 'OK') {
-      throw new Error(response.data.message)
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
     }
     return response.data;
   } catch (error) {
-    return { error: error.response.data.message || error.message}
+    return { error: error.response.data.message || error.message };
   }
-}
+};
 
-export const update = async({email, name, password}) => {
+export const update = async ({ email, name, password }) => {
   try {
-    const {_id, token} = getUserInfos();
+    const { _id, token } = getUserInfos();
     const response = await axios({
       url: `${apiUrl}/api/users/${_id}`,
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       data: {
         email,
         password,
-        name
-      }
+        name,
+      },
     });
-    if (response.statusText !== 'OK') {
-      throw new Error(response.data.message)
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
     }
     return response.data;
   } catch (error) {
-    return { error: error.response.data.message || error.message}
+    return { error: error.response.data.message || error.message };
   }
-}
+};
+
+export const createOrder = async (order) => {
+  const { token } = getUserInfos();
+  try {
+    const response = await axios({
+      url: `${apiUrl}/api/orders`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        order,
+      },
+    });
+    console.log("response.statusText: ", response.statusText);
+    if (response.statusText !== "Created") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    return {
+      error: error.response ? error.response.data.message : error.message,
+    };
+  }
+};

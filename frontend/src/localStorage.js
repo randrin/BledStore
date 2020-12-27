@@ -53,13 +53,18 @@ export const setShippingInfos = ({
 };
 
 export const getPaymentInfos = () => {
-    const payment = localStorage.getItem('payment')
-      ? JSON.parse(localStorage.getItem('payment'))
-      : {
-          paymentMethod: 'paypal',
-        };
-    return payment;
-  };
-  export const setPaymentInfos = ({ paymentMethod = 'paypal' }) => {
-    localStorage.setItem('payment', JSON.stringify({ paymentMethod }));
-  };
+  const payment = localStorage.getItem("payment")
+    ? JSON.parse(localStorage.getItem("payment"))
+    : {
+        paymentMethod: "paypal",
+      };
+  return payment;
+};
+
+export const setPaymentInfos = ({ paymentMethod = "paypal" }) => {
+  localStorage.setItem("payment", JSON.stringify({ paymentMethod }));
+};
+
+export const cleanCart = () => {
+    localStorage.removeItem('cartItems')
+}
