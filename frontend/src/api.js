@@ -42,3 +42,27 @@ export const signin = async ({email, password}) => {
     return { error: error.response.data.message || error.message}
   }
 }
+
+export const register = async({email, name, password}) => {
+  try {
+    const response = await axios({
+      url: `${apiUrl}/api/users/register`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        email,
+        password,
+        name
+      }
+    });
+    if (response.statusText !== 'OK') {
+      throw new Error(response.data.message)
+    }
+    return response.data;
+  } catch (error) {
+    console.log(error);
+    return { error: error.response.data.message || error.message}
+  }
+}

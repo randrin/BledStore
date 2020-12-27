@@ -342,6 +342,7 @@ footer {
     width: 32rem;
     border: 0.1rem solid #c0c0c0;
     list-style-type: none;
+    border-radius: 10px;
 }
 
 .form-items li {
@@ -351,6 +352,15 @@ footer {
     margin-top: 1rem;
 }
 
+.form-items li label {
+    margin-bottom: 5px;
+}
+
 .form-container h1 {
     font-size: 2.5rem;
+    text-align: center;
+}
+
+.form-account {
+    text-align: center;
 }

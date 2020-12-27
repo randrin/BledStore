@@ -13,11 +13,11 @@ export const setUserInfos = ({
     password = '',
     name = '',
     isAdmin = '',
-    token = ''
+    token = false
 }) => {
-    localStorage.setItem('userInfos', JSON.stringify(_id, email, password, name, isAdmin, token))
+    localStorage.setItem('userInfos', JSON.stringify({_id, email, password, name, isAdmin, token}));
 }
 
 export const getUserInfos = () => {
-    return localStorage.getItem('userInfos') ? JSON.parse(localStorage.getItem('userInfos')) : {name: '', password: '', email: ''}
+    return localStorage.getItem('userInfos') ? JSON.parse(localStorage.getItem('userInfos')) : {name: '', password: '', email: ''};
 }

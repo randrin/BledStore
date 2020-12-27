@@ -33,13 +33,37 @@ userRouter.post(
     if (!signinUser) {
       res.status(401).send({ message: "Invalid Email or Password. Try again" });
     } else {
-        console.log('signinUser: ', signinUser)
+    //   console.log("signinUser: ", signinUser);
       res.send({
         _id: signinUser._id,
         name: signinUser.name,
         email: signinUser.email,
         isAdmin: signinUser.isAdmin,
         token: generateToken(signinUser),
+      });
+    }
+  })
+);
+
+userRouter.post(
+  "/register",
+  expressAyncHandler(async (req, res) => {
+    const dataUser = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+    const user = await dataUser.save();
+    if (!user) {
+      res.status(401).send({ message: "Invalid user Data: Try again!!" });
+    } else {
+    //   console.log("signinUser: ", signinUser);
+      res.send({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: generateToken(user),
       });
     }
   })

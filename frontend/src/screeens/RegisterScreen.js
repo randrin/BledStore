@@ -1,17 +1,19 @@
-import { signin } from "../api";
+import { register } from "../api";
 import { setUserInfos, getUserInfos } from "../localStorage";
 import { hideLoading, showLoading, showMessage } from "../utils";
 
-const SigninScreen = {
+const RegisterScreen = {
   after_render: () => {
     document
-      .getElementById("signin-form")
+      .getElementById("register-form")
       .addEventListener("submit", async (e) => {
         e.preventDefault();
         showLoading();
-        const data = await signin({
+        const data = await register({
           email: document.getElementById("email").value,
           password: document.getElementById("password").value,
+          name: document.getElementById("name").value,
+          confirmPassword: document.getElementById("confirm-password").value,
         });
         hideLoading();
         if (data.error) {
@@ -28,10 +30,14 @@ const SigninScreen = {
     }
     return `
         <div class="form-container">
-            <form id="signin-form">
+            <form id="register-form">
                 <ul class="form-items">
                     <li>
-                        <h1>Sign In</h1>
+                        <h1>Sign Up</h1>
+                    </li>
+                    <li>
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" placeholder="Enter your name" />
                     </li>
                     <li>
                         <label for="email">Email</label>
@@ -42,11 +48,15 @@ const SigninScreen = {
                         <input id="password" name="password" type="password" placeholder="Enter your password" />
                     </li>
                     <li>
-                        <button type="submit" class="primary">Sign In</button>
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" name="confirm-password" type="password" placeholder="Confirm your name" />
+                    </li>
+                    <li>
+                        <button type="submit" class="primary">Register</button>
                     </li>
                     <li>
                         <div class="form-account">
-                            New User? <b><a href="/#/register"> Create a new account</a></b>
+                            Already have an account? <b><a href="/#/signin"> Login</a></b>
                         </div>
                     </li>
                 </ul>
@@ -55,4 +65,4 @@ const SigninScreen = {
   },
 };
 
-export default SigninScreen;
+export default RegisterScreen;
