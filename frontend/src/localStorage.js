@@ -32,3 +32,34 @@ export const getUserInfos = () => {
 export const clearUserInfos = () => {
   localStorage.removeItem("userInfos");
 };
+
+export const getShippingInfos = () => {
+  const shipping = localStorage.getItem("shipping")
+    ? JSON.parse(localStorage.getItem("shipping"))
+    : { address: "", city: "", postalCode: "", country: "" };
+  return shipping;
+};
+
+export const setShippingInfos = ({
+  address = "",
+  city = "",
+  postalCode = "",
+  country = "",
+}) => {
+  localStorage.setItem(
+    "shipping",
+    JSON.stringify({ address, city, postalCode, country })
+  );
+};
+
+export const getPaymentInfos = () => {
+    const payment = localStorage.getItem('payment')
+      ? JSON.parse(localStorage.getItem('payment'))
+      : {
+          paymentMethod: 'paypal',
+        };
+    return payment;
+  };
+  export const setPaymentInfos = ({ paymentMethod = 'paypal' }) => {
+    localStorage.setItem('payment', JSON.stringify({ paymentMethod }));
+  };
