@@ -1,5 +1,6 @@
 import axios from "axios";
 import { apiUrl } from "./config";
+import { getUserInfos } from "./localStorage";
 
 export const getProduct = async (id) => {
   try {
@@ -15,7 +16,6 @@ export const getProduct = async (id) => {
     }
     return response.data;
   } catch (error) {
-    console.log(error);
     return { error: error.response.data.message || error.message };
   }
 };
@@ -38,7 +38,6 @@ export const signin = async ({email, password}) => {
     }
     return response.data;
   } catch (error) {
-    console.log(error);
     return { error: error.response.data.message || error.message}
   }
 }
@@ -62,7 +61,31 @@ export const register = async({email, name, password}) => {
     }
     return response.data;
   } catch (error) {
-    console.log(error);
+    return { error: error.response.data.message || error.message}
+  }
+}
+
+export const update = async({email, name, password}) => {
+  try {
+    const {_id, token} = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/users/${_id}`,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': `Bearer ${token}`
+      },
+      data: {
+        email,
+        password,
+        name
+      }
+    });
+    if (response.statusText !== 'OK') {
+      throw new Error(response.data.message)
+    }
+    return response.data;
+  } catch (error) {
     return { error: error.response.data.message || error.message}
   }
 }

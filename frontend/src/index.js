@@ -3,6 +3,7 @@ import CartScreen from "./screeens/CartScreen.js";
 import Error404Screen from "./screeens/Error404Screen.js";
 import HomeScreen from "./screeens/HomeScreen.js";
 import ProductScreen from "./screeens/ProductSreen.js";
+import ProfileScreen from "./screeens/ProfileScreen.js";
 import RegisterScreen from "./screeens/RegisterScreen.js";
 import SigninScreen from "./screeens/SigninScreen.js";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
@@ -13,7 +14,8 @@ const routes = {
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
   "/signin": SigninScreen,
-  "/register": RegisterScreen
+  "/register": RegisterScreen,
+  '/profile': ProfileScreen
 };
 
 const router = async () => {
@@ -29,7 +31,7 @@ const router = async () => {
   await Header.after_render();
   const main = document.getElementById("bled-store");
   main.innerHTML = await screen.render();
-  await screen.after_render();
+  if(screen.after_render) await screen.after_render();
   setTimeout(() => {
     hideLoading();
   }, 1000);

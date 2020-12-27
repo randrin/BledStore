@@ -1,23 +1,34 @@
 export const getCartItems = () => {
-    const cartItems = localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems')) : [];
-    return cartItems;
-}
+  const cartItems = localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
+    : [];
+  return cartItems;
+};
 
 export const setCartItems = (cartItems) => {
-    localStorage.setItem('cartItems', JSON.stringify(cartItems))
-}
+  localStorage.setItem("cartItems", JSON.stringify(cartItems));
+};
 
 export const setUserInfos = ({
-    _id = '',
-    email = '',
-    password = '',
-    name = '',
-    isAdmin = '',
-    token = false
+  _id = "",
+  email = "",
+  password = "",
+  name = "",
+  isAdmin = "",
+  token = false,
 }) => {
-    localStorage.setItem('userInfos', JSON.stringify({_id, email, password, name, isAdmin, token}));
-}
+  localStorage.setItem(
+    "userInfos",
+    JSON.stringify({ _id, email, password, name, isAdmin, token })
+  );
+};
 
 export const getUserInfos = () => {
-    return localStorage.getItem('userInfos') ? JSON.parse(localStorage.getItem('userInfos')) : {name: '', password: '', email: ''};
-}
+  return localStorage.getItem("userInfos")
+    ? JSON.parse(localStorage.getItem("userInfos"))
+    : { name: "", password: "", email: "" };
+};
+
+export const clearUserInfos = () => {
+  localStorage.removeItem("userInfos");
+};

@@ -1,7 +1,7 @@
 import express from "express";
 import User from "../models/userModel";
 import expressAyncHandler from "express-async-handler";
-import { generateToken } from "../utils";
+import { generateToken, isAuth } from "../utils";
 
 const userRouter = express.Router();
 
@@ -33,7 +33,6 @@ userRouter.post(
     if (!signinUser) {
       res.status(401).send({ message: "Invalid Email or Password. Try again" });
     } else {
-    //   console.log("signinUser: ", signinUser);
       res.send({
         _id: signinUser._id,
         name: signinUser.name,
@@ -57,13 +56,35 @@ userRouter.post(
     if (!user) {
       res.status(401).send({ message: "Invalid user Data: Try again!!" });
     } else {
-    //   console.log("signinUser: ", signinUser);
       res.send({
         _id: user._id,
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
         token: generateToken(user),
+      });
+    }
+  })
+);
+
+userRouter.put(
+  "/:id",
+  isAuth,
+  expressAyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(401).send({ message: "User not found !!!" });
+    } else {
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+      user.password = req.body.password || user.password;
+      const updatedUser = await user.save();
+      res.send({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser),
       });
     }
   })
