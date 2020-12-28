@@ -165,7 +165,27 @@ export const payOrder = async (orderId, paymentResult) => {
       throw new Error(response.data.message);
     }
     return response.data;
-  } catch (err) {
+  } catch (error) {
     return { error: error.response ? error.response.data.message : error.message };
   }
 };
+
+export const getMineOrders = async () => {
+  try {
+    const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/orders/mineOrders`,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      }
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    return { error: error.response ? error.response.data.message : error.message };
+  }
+}

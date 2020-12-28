@@ -6,6 +6,15 @@ import { isAuth } from "../utils";
 const orderRouter = express.Router();
 
 orderRouter.get(
+  "/mineOrders",
+  isAuth,
+  expressAyncHandler(async (req, res) => {
+    const orders = await Order.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
+orderRouter.get(
   "/:id",
   isAuth,
   expressAyncHandler(async (req, res) => {
