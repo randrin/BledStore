@@ -2,6 +2,7 @@ import Header from "./components/Header.js";
 import CartScreen from "./screeens/CartScreen.js";
 import Error404Screen from "./screeens/Error404Screen.js";
 import HomeScreen from "./screeens/HomeScreen.js";
+import OrderScreen from "./screeens/OrderScreen.js";
 import PaymentScreen from "./screeens/PaymentScreen.js";
 import PlaceOrderScreen from "./screeens/PlaceOrderScreen.js";
 import ProductScreen from "./screeens/ProductSreen.js";
@@ -14,6 +15,7 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 const routes = {
   "/": HomeScreen,
   "/product/:id": ProductScreen,
+  "/order/:id": OrderScreen,
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
   "/signin": SigninScreen,

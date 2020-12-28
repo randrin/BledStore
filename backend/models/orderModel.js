@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const OrderSchema = new mongoose.Schema(
+const orderSchema = new mongoose.Schema(
   {
     orderItems: [
       {
@@ -43,7 +43,5 @@ const OrderSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
-const Order = mongoose.model("Order", OrderSchema);
-
+const Order = mongoose.model("Order", orderSchema);
 export default Order;

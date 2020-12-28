@@ -91,8 +91,8 @@ export const update = async ({ email, name, password }) => {
 };
 
 export const createOrder = async (order) => {
-  const { token } = getUserInfos();
   try {
+    const { token } = getUserInfos();
     const response = await axios({
       url: `${apiUrl}/api/orders`,
       method: "POST",
@@ -104,7 +104,6 @@ export const createOrder = async (order) => {
         order,
       },
     });
-    console.log("response.statusText: ", response.statusText);
     if (response.statusText !== "Created") {
       throw new Error(response.data.message);
     }
@@ -113,5 +112,25 @@ export const createOrder = async (order) => {
     return {
       error: error.response ? error.response.data.message : error.message,
     };
+  }
+};
+
+export const getOrder = async (id) => {
+  try {
+    const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/orders/${id}`,
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (err) {
+    return { error: err.message };
   }
 };

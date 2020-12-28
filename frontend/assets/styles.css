@@ -443,3 +443,7 @@ footer {
     font-weight: bold;
     color: #c04000;
 }
+
+div>h1 {
+    padding: 2rem;
+}
