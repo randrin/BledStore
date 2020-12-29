@@ -513,7 +513,7 @@ td {
 }
 
 .dashboard-menu {
-    flex: 1 1 20rem;
+    flex: 1 1 10rem;
     background-color: #f0f0f0;
 }
 
@@ -538,7 +538,7 @@ td {
 }
 
 .dashboard-content {
-    flex: 4 1 80rem;
+    flex: 4 1 90rem;
     padding: 1rem;
 }
 
@@ -547,9 +547,15 @@ td {
     align-items: center;
 }
 
+.cta-button {
+    font-size: 1.6rem !important;
+    padding: 1rem !important;
+}
+
 .product-list button {
     font-size: 1.3rem;
     padding: 0.5rem;
+    margin-bottom: 5px;
 }
 
 .tr-action {

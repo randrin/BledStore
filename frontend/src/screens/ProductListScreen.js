@@ -51,8 +51,8 @@ const ProductListScreen = {
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>
-              <button id="${product._id}" class="edit-product-button">Edit</button>
-              <button id="${product._id}" class="delete-product-button">Delete</button>
+              <button id="${product._id}" class="edit-product-button"><i class="fa fa-edit success"></i> Edit</button>
+              <button id="${product._id}" class="delete-product-button"><i class="fa fa-trash error"></i> Delete</button>
               </td>
             </tr>
             `

@@ -57,8 +57,6 @@ productRouter.put(
   isAdmin,
   expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
-    console.log('Product: ', product);
-    console.log('req.body: ', req.body);
     if (product) {
       product.name = req.body.name;
       product.description = req.body.description;
@@ -70,7 +68,7 @@ productRouter.put(
       const productUpdated = await product.save();
       if (productUpdated) {
         res.status(201).send({
-          message: "Product Updated successfuly.",
+          message: "Product Updated successfully.",
           product: productUpdated,
         });
       } else {

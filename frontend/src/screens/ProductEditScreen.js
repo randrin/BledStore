@@ -1,5 +1,5 @@
 import { hideLoading, parseRequestUrl, showLoading } from "../utils";
-import { getProduct, productUpdate } from "../api";
+import { getProduct, productUpdate, uploadProductImage } from "../api";
 import DashboardMenu from "../components/DashboardMenu";
 
 const ProductEditScreen = {
@@ -30,6 +30,23 @@ const ProductEditScreen = {
         showMessage(data.error);
       } else {
         document.location.hash = `/productlist`;
+      }
+    });
+    document
+    .getElementById('image-file')
+    .addEventListener('change', async (e) => {
+      debugger
+      const file = e.target.files[0];
+      const formData = new FormData();
+      formData.append('image', file);
+      showLoading();
+      const data = await uploadProductImage(formData);
+      hideLoading();
+      if (data.error) {
+        showMessage(data.error);
+      } else {
+        showMessage('Image uploaded successfully.');
+        document.getElementById('image').value = data.image;
       }
     });
   },
@@ -63,6 +80,7 @@ const ProductEditScreen = {
               <input type="text" name="image" value="${
                 product.image
               }" id="image" />
+              <input type="file" name="image-file" id="image-file" />
             </li>
             <li>
               <label for="brand">Brand</label>
@@ -88,7 +106,7 @@ const ProductEditScreen = {
                 product.description}</textarea>
             </li>
             <li>
-              <button type="submit" class="primary">Update</button>
+              <button type="submit" class="cta-button primary">Update</button>
             </li>
           </ul>
         </form>

@@ -7,6 +7,7 @@ import bodyParser from "body-parser";
 import userRouter from "./routes/userRoutes";
 import orderRouter from "./routes/orderRoutes";
 import productRouter from "./routes/productRouters";
+import uploadRouter from "./routes/uploadRouters";
 
 mongoose
   .connect(config.MONGODB_URL, {
@@ -24,6 +25,7 @@ mongoose
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use('/api/uploads', uploadRouter);
 app.use("/api/users", userRouter);
 app.use("/api/orders", orderRouter);
 app.use("/api/products", productRouter);

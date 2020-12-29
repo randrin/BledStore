@@ -71,7 +71,7 @@ const ProductCreateScreen = {
                             <textarea rows="10" name="description" id="description"></textarea>
                         </li>
                         <li>
-                            <button type="submit" class="primary">Create</button>
+                            <button type="submit" class="cta-button primary">Create</button>
                         </li>
                         </ul>
                     </form>

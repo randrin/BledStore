@@ -57,12 +57,15 @@ const ProfileScreen = {
         </li>
         <li>
           <button type="submit" class="primary">Update</button>
-        </li>
+        </li>      
+      </ul>
+      <ul class="form-items">
         <li>
-        <button type="button" id="logout-profile" >Sign Out</button>
-      </li>        
+          <button type="button" id="logout-profile" >Sign Out</button>
+        </li>
       </ul>
     </form>
+   
   </div>
     </div>
     <div class="profile-orders">
