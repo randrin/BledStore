@@ -20,6 +20,26 @@ export const getProduct = async (id) => {
   }
 };
 
+export const createProduct = async () => {
+  try {
+    const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/products`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.statusText !== "Created") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    return { error: error.response.data.message || error.message };
+  }
+};
+
 export const getProducts = async () => {
   try {
     const response = await axios({
@@ -184,7 +204,9 @@ export const payOrder = async (orderId, paymentResult) => {
     }
     return response.data;
   } catch (error) {
-    return { error: error.response ? error.response.data.message : error.message };
+    return {
+      error: error.response ? error.response.data.message : error.message,
+    };
   }
 };
 
@@ -197,13 +219,15 @@ export const getMineOrders = async () => {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
-      }
+      },
     });
     if (response.statusText !== "OK") {
       throw new Error(response.data.message);
     }
     return response.data;
   } catch (error) {
-    return { error: error.response ? error.response.data.message : error.message };
+    return {
+      error: error.response ? error.response.data.message : error.message,
+    };
   }
-}
+};
