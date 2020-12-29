@@ -1,5 +1,6 @@
 import Header from "./components/Header.js";
 import CartScreen from "./screeens/CartScreen.js";
+import DashboardScreen from "./screeens/DashboardScreen.js";
 import Error404Screen from "./screeens/Error404Screen.js";
 import HomeScreen from "./screeens/HomeScreen.js";
 import OrderScreen from "./screeens/OrderScreen.js";
@@ -23,7 +24,8 @@ const routes = {
   '/profile': ProfileScreen,
   '/shipping': ShippingScreen,
   '/payment': PaymentScreen,
-  '/placeorder': PlaceOrderScreen
+  '/placeorder': PlaceOrderScreen,
+  '/dashboard': DashboardScreen
 };
 
 const router = async () => {
