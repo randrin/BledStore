@@ -31,19 +31,25 @@ app.use("/api/paypal/cliendId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
 });
 
-app.get("/api/products", (req, res) => {
-  res.send(data.products);
-});
+// Mock Products Data -> To remove later
+// app.get("/api/products", (req, res) => {
+//   res.send(data.products);
+// });
 
-app.get("/api/product/:id", (req, res) => {
-  const product = data.products.find((prd) => prd._id === req.params.id);
+// Products to MongoDB
+// app.get("/api/products", (req, res) => {
+//   res.send(data.products);
+// });
 
-  if (product) {
-    res.send(product);
-  } else {
-    res.status(404).send({ message: "Product not found." });
-  }
-});
+// app.get("/api/product/:id", (req, res) => {
+//   const product = data.products.find((prd) => prd._id === req.params.id);
+
+//   if (product) {
+//     res.send(product);
+//   } else {
+//     res.status(404).send({ message: "Product not found." });
+//   }
+// });
 
 app.use((error, req, res, next) => {
   const status = error.name && error.name === "ValidationError" ? 400 : 500;

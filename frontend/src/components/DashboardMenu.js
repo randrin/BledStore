@@ -1,5 +1,11 @@
+import { getUserInfos } from "../localStorage";
+
 const DashboardMenu = {
     render: (props) => {
+        const { name } = getUserInfos();
+        if (!name) {
+          document.location.hash = "/";
+        }
       return `
       <div class="dashboard-menu">
         <ul>

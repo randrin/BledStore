@@ -78,9 +78,15 @@ button.primary {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.overlay>span {
+.overlay.active .loading-icon {
     background-image: url('../assets/images/loading.gif');
     background-repeat: no-repeat;
+    display: flex;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
 }
 
 .overlay.active {
@@ -88,6 +94,8 @@ button.primary {
     justify-content: center;
     align-items: center;
     color: #000000;
+    font-size: 18px;
+    font-weight: 600;
 }
 
 .overlay>div {
@@ -106,6 +114,10 @@ button.primary {
 
 .fw {
     width: 100%;
+}
+
+.font-bold {
+    font-weight: bold;
 }
 
 .grid-container {
@@ -349,6 +361,10 @@ footer {
     border-radius: 10px;
 }
 
+.form-items-large {
+    width: 62rem;
+}
+
 .form-items li {
     display: flex;
     flex-direction: column;
@@ -540,7 +556,7 @@ td {
     width: 10rem;
 }
 
-.product-create-button  {
+.product-create-button {
     float: right;
     position: absolute;
     right: 10px;

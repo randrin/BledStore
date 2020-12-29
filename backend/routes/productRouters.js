@@ -6,6 +6,14 @@ import { isAdmin, isAuth } from "../utils";
 const productRouter = express.Router();
 
 productRouter.get(
+  "/",
+  expressAsyncHandler(async (req, res) => {
+    const products = await Product.find({});
+    res.send(products);
+  })
+);
+
+productRouter.get(
   "/:id",
   expressAsyncHandler(async (req, res) => {
     const product = await Product.findById(req.params.id);
@@ -22,7 +30,6 @@ productRouter.post(
   isAuth,
   isAdmin,
   expressAsyncHandler(async (req, res) => {
-    console.log("req.body: ", req.body);
     const product = new Product({
       name: req.body.name,
       description: req.body.description,

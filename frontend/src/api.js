@@ -5,7 +5,7 @@ import { getUserInfos } from "./localStorage";
 export const getProduct = async (id) => {
   try {
     const response = await axios({
-      url: `${apiUrl}/api/product/${id}`,
+      url: `${apiUrl}/api/products/${id}`,
       method: "GET",
       headers: {
         "Content-Type": "application/json",

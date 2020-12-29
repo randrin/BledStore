@@ -67,6 +67,7 @@ const ProfileScreen = {
     </div>
     <div class="profile-orders">
     <h2>Order History</h2>
+    <hr/>
       <table>
         <thead>
           <tr>
@@ -89,8 +90,16 @@ const ProfileScreen = {
           <td>${order._id}</td>
           <td>${order.createdAt}</td>
           <td>${order.totalPrice}</td>
-          <td>${order.paidAt || "No"}</td>
-          <td>${order.deliveryAt || "No"}</td>
+          <td>${
+            order.paidAt
+              ? `<span class="success font-bold">${order.paidAt}</span>`
+              : `<span class="error font-bold">No</span>`
+          }</td>
+          <td>${
+            order.deliveryAt
+              ? `<span class="success font-bold">${order.deliveryAt}</span>`
+              : `<span class="error font-bold">No</span>`
+          }</td>
           <td><a href="/#/order/${order._id}">DETIALS</a> </td>
         </tr>
         `

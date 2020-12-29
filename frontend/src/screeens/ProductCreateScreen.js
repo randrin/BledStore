@@ -41,7 +41,7 @@ const ProductCreateScreen = {
             <div class="product-list">
                 <div class="form-container">
                     <form id="create-product-form">
-                        <ul class="form-items">
+                        <ul class="form-items form-items-large">
                         <li>
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" />
@@ -68,7 +68,7 @@ const ProductCreateScreen = {
                         </li>
                         <li>
                             <label for="description">Description</label>
-                            <input type="text" name="description" id="description" />
+                            <textarea rows="10" name="description" id="description"></textarea>
                         </li>
                         <li>
                             <button type="submit" class="primary">Create</button>

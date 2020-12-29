@@ -6,12 +6,12 @@ const ProductListScreen = {
     document
       .getElementById("create-product-button")
       .addEventListener("click", async () => {
-        document.location.hash = `/productcreate`;
+        document.location.hash = "/createproduct";
       });
-    const editButtons = document.getElementsByClassName("edit-button");
+    const editButtons = document.getElementsByClassName("edit-product-button");
     Array.from(editButtons).forEach((editButton) => {
       editButton.addEventListener("click", () => {
-        document.location.hash = `/product/${editButton.id}/edit`;
+        document.location.hash = `/productedit/${editButton.id}`;
       });
     });
   },
@@ -51,8 +51,8 @@ const ProductListScreen = {
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>
-              <button id="${product._id}" class="edit-button">Edit</button>
-              <button id="${product._id}" class="delete-button">Delete</button>
+              <button id="${product._id}" class="edit-product-button">Edit</button>
+              <button id="${product._id}" class="delete-product-button">Delete</button>
               </td>
             </tr>
             `

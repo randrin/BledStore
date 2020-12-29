@@ -1,22 +1,28 @@
 import { parseRequestUrl } from "../utils";
 import { getProduct } from "../api";
+import DashboardMenu from "../components/DashboardMenu";
 
 const ProductEditScreen = {
-  after_render: () => {},
+  after_render: () => {
+    document
+    .getElementById("back-to-products")
+    .addEventListener("click", async () => {
+      document.location.hash = `/productlist`;
+    });
+  },
   render: async () => {
     const request = parseRequestUrl();
     const product = await getProduct(request.id);
     return `
-    <div class="content">
-      <div>
-        <a href="/#/productlist">Back to products</a>
-      </div>
+    <div class="dashboard">
+    ${DashboardMenu.render({ selected: "products" })}
+    <div class="dashboard-content">
+    <h1>Edit Product ${product._id}</h1>
+    <hr />
+    <div class="product-list">
       <div class="form-container">
         <form id="edit-product-form">
-          <ul class="form-items">
-            <li>
-              <h1>Edit Product ${product._id.substring(0, 8)}</h1>
-            </li>
+          <ul class="form-items form-items-large">
             <li>
               <label for="name">Name</label>
               <input type="text" name="name" value="${
@@ -43,7 +49,7 @@ const ProductEditScreen = {
             </li>
             <li>
               <label for="countInStock">Count In Stock</label>
-              <input type="text" name="countInStock" value="${
+              <input type="number" name="countInStock" value="${
                 product.countInStock
               }" id="countInStock" />
             </li>
@@ -55,9 +61,8 @@ const ProductEditScreen = {
             </li>
             <li>
               <label for="description">Description</label>
-              <input type="text" name="description" value="${
-                product.description
-              }" id="description" />
+              <textarea rows="10" name="description" id="description">${
+                product.description}</textarea>
             </li>
             <li>
               <button type="submit" class="primary">Update</button>
@@ -66,7 +71,12 @@ const ProductEditScreen = {
         </form>
       </div>
     </div>
-    `;
+    <hr />
+    <button id="back-to-products" class="primary">
+        Back to Products List
+    </button>
+</div>
+</div>`;
   },
 };
 export default ProductEditScreen;

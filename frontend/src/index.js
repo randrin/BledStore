@@ -18,7 +18,8 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 
 const routes = {
   "/": HomeScreen,
-  "/product/:id": ProductScreen,
+  "/productedit/:id": ProductEditScreen,
+  "/product:id": ProductScreen,
   "/order/:id": OrderScreen,
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
@@ -30,8 +31,7 @@ const routes = {
   "/placeorder": PlaceOrderScreen,
   "/dashboard": DashboardScreen,
   "/productlist": ProductListScreen,
-  "/productcreate": ProductCreateScreen,
-  "/product/:id/edit": ProductEditScreen,
+  "/createproduct": ProductCreateScreen
 };
 
 const router = async () => {
