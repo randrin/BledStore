@@ -30,6 +30,10 @@ a {
     text-decoration: none;
 }
 
+hr {
+    margin-bottom: 4rem;
+}
+
 .success {
     color: #40c040;
 }
@@ -522,6 +526,11 @@ td {
     padding: 1rem;
 }
 
+.dashboard-box-title {
+    display: flex;
+    align-items: center;
+}
+
 .product-list button {
     font-size: 1.3rem;
     padding: 0.5rem;
@@ -529,4 +538,10 @@ td {
 
 .tr-action {
     width: 10rem;
+}
+
+.product-create-button  {
+    float: right;
+    position: absolute;
+    right: 10px;
 }

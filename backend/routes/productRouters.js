@@ -5,6 +5,45 @@ import { isAdmin, isAuth } from "../utils";
 
 const productRouter = express.Router();
 
+productRouter.get(
+  "/:id",
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      res.send(product);
+    } else {
+      res.status(404).send({ message: "Product Not Found" });
+    }
+  })
+);
+
+productRouter.post(
+  "/create",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    console.log("req.body: ", req.body);
+    const product = new Product({
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+      brand: req.body.brand,
+      image: req.body.image,
+      price: req.body.price,
+      countInStock: req.body.countInStock,
+    });
+    const createdProduct = await product.save();
+    if (createdProduct) {
+      res.status(201).send({
+        message: "Product Created successfuly.",
+        product: createdProduct,
+      });
+    } else {
+      res.status(500).send({ message: "Error in creating product" });
+    }
+  })
+);
+
 productRouter.post(
   "/",
   isAuth,
@@ -19,12 +58,10 @@ productRouter.post(
     });
     const createdProduct = await product.save();
     if (createdProduct) {
-      res
-        .status(201)
-        .send({
-          message: "Product Created successfuly.",
-          product: createdProduct,
-        });
+      res.status(201).send({
+        message: "Product Created successfuly.",
+        product: createdProduct,
+      });
     } else {
       res.status(500).send({ message: "Error in creating product" });
     }

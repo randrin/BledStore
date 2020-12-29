@@ -58,6 +58,43 @@ export const getProducts = async () => {
   }
 };
 
+export const productCreate = async ({
+  name,
+  price,
+  image,
+  brand,
+  countInStock,
+  category,
+  description,
+}) => {
+  try {
+    const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/products/create`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      data: {
+        name,
+        price,
+        image,
+        brand,
+        countInStock,
+        category,
+        description,
+      },
+    });
+    if (response.statusText !== "Created") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    return { error: error.response.data.message || error.message };
+  }
+};
+
 export const signin = async ({ email, password }) => {
   try {
     const response = await axios({

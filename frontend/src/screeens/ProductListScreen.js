@@ -1,25 +1,33 @@
-import DashboardMenu from '../components/DashboardMenu';
-import { createProduct, getProducts } from '../api';
+import DashboardMenu from "../components/DashboardMenu";
+import { getProducts } from "../api";
 
 const ProductListScreen = {
   after_render: () => {
     document
-    .getElementById('create-product-button')
-    .addEventListener('click', async () => {
-      const data = await createProduct();
-      document.location.hash = `/product/${data.product._id}/edit`;
+      .getElementById("create-product-button")
+      .addEventListener("click", async () => {
+        document.location.hash = `/productcreate`;
+      });
+    const editButtons = document.getElementsByClassName("edit-button");
+    Array.from(editButtons).forEach((editButton) => {
+      editButton.addEventListener("click", () => {
+        document.location.hash = `/product/${editButton.id}/edit`;
+      });
     });
   },
   render: async () => {
     const products = await getProducts();
     return `
     <div class="dashboard">
-    ${DashboardMenu.render({ selected: 'products' })}
+    ${DashboardMenu.render({ selected: "products" })}
     <div class="dashboard-content">
-      <h1>Products</h1>
-      <button id="create-product-button" class="primary">
-        Create Product
-      </button>
+      <div class="dashboard-box-title">
+        <h1>Products</h1>
+        <button id="create-product-button" class="product-create-button primary">
+            Create Product
+        </button>
+      </div>
+      <hr/>
       <div class="product-list">
         <table>
           <thead>
@@ -49,7 +57,7 @@ const ProductListScreen = {
             </tr>
             `
               )
-              .join('\n')}
+              .join("\n")}
           </tbody>
         </table>
       </div>
