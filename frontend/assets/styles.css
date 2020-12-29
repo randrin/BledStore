@@ -447,63 +447,86 @@ footer {
 div>h1 {
     padding: 2rem;
 }
+
 /* Profile */
 .profile {
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-  }
-  .profile-info {
+}
+
+.profile-info {
     flex: 1 1 20rem;
-  }
-  .profile-orders {
+}
+
+.profile-orders {
     flex: 3 1 60rem;
     margin-left: 1rem;
-  }
-  
-  table {
+}
+
+table {
     width: 100%;
-  }
-  th {
+}
+
+th {
     text-align: left;
-  }
-  tbody > tr:nth-child(odd) {
+}
+
+tbody>tr:nth-child(odd) {
     background-color: #f0f0f0;
-  }
-  td {
+}
+
+td {
     padding: 0.5rem;
-  }
-  /* Dashboard */
+}
+
+/* Dashboard */
 .dashboard {
     display: flex;
     flex-wrap: wrap;
     height: 100%;
-  }
-  .dashboard h1 {
+}
+
+.dashboard h1 {
     font-size: 3rem;
     margin: 1rem 0;
-  }
-  .dashboard-menu {
+}
+
+.dashboard-menu {
     flex: 1 1 20rem;
     background-color: #f0f0f0;
-  }
-  .dashboard-menu ul {
+}
+
+.dashboard-menu ul {
     padding: 0;
-  }
-  .dashboard-menu a {
+}
+
+.dashboard-menu a {
     display: flex;
     padding: 1rem;
     padding-left: 2rem;
     justify-content: space-between;
-  }
-  .dashboard-menu a:hover {
+}
+
+.dashboard-menu a:hover {
     background-color: #c0c0c0;
-  }
-  .dashboard-menu li.selected a {
+}
+
+.dashboard-menu li.selected a {
     background-color: #c0c0c0;
     color: #f08040;
-  }
-  .dashboard-content {
+}
+
+.dashboard-content {
     flex: 4 1 80rem;
     padding: 1rem;
-  }
+}
+
+.product-list button {
+    font-size: 1.3rem;
+    padding: 0.5rem;
+}
+
+.tr-action {
+    width: 10rem;
+}
