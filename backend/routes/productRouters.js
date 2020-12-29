@@ -51,6 +51,37 @@ productRouter.post(
   })
 );
 
+productRouter.put(
+  "/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    console.log('Product: ', product);
+    console.log('req.body: ', req.body);
+    if (product) {
+      product.name = req.body.name;
+      product.description = req.body.description;
+      product.category = req.body.category;
+      product.brand = req.body.brand;
+      product.image = req.body.image;
+      product.price = req.body.price;
+      product.countInStock = req.body.countInStock;
+      const productUpdated = await product.save();
+      if (productUpdated) {
+        res.status(201).send({
+          message: "Product Updated successfuly.",
+          product: productUpdated,
+        });
+      } else {
+        res.status(500).send({ message: "Error in updating product" });
+      }
+    } else {
+      res.status(404).send({ message: "Product not Found" });
+    }
+  })
+);
+
 productRouter.post(
   "/",
   isAuth,

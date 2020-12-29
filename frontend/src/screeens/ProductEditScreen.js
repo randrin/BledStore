@@ -1,13 +1,36 @@
-import { parseRequestUrl } from "../utils";
-import { getProduct } from "../api";
+import { hideLoading, parseRequestUrl, showLoading } from "../utils";
+import { getProduct, productUpdate } from "../api";
 import DashboardMenu from "../components/DashboardMenu";
 
 const ProductEditScreen = {
-  after_render: () => {
+  after_render: async () => {
+    const request = parseRequestUrl();
     document
     .getElementById("back-to-products")
     .addEventListener("click", async () => {
       document.location.hash = `/productlist`;
+    });
+    document
+    .getElementById("edit-product-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      showLoading();
+      const data = await productUpdate({
+        _id: request.id,
+        name: document.getElementById("name").value,
+        price: document.getElementById("price").value,
+        image: document.getElementById("image").value,
+        brand: document.getElementById("brand").value,
+        countInStock: document.getElementById("countInStock").value,
+        category: document.getElementById("category").value,
+        description: document.getElementById("description").value,
+      });
+      hideLoading();
+      if (data.error) {
+        showMessage(data.error);
+      } else {
+        document.location.hash = `/productlist`;
+      }
     });
   },
   render: async () => {

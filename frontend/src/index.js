@@ -19,7 +19,7 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 const routes = {
   "/": HomeScreen,
   "/productedit/:id": ProductEditScreen,
-  "/product:id": ProductScreen,
+  "/product/:id": ProductScreen,
   "/order/:id": OrderScreen,
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
