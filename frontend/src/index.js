@@ -18,7 +18,7 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 
 const routes = {
   "/": HomeScreen,
-  "/productedit/:id": ProductEditScreen,
+  "/product/:id/edit": ProductEditScreen,
   "/product/:id": ProductScreen,
   "/order/:id": OrderScreen,
   "/cart/:id": CartScreen,
@@ -30,8 +30,8 @@ const routes = {
   "/payment": PaymentScreen,
   "/placeorder": PlaceOrderScreen,
   "/dashboard": DashboardScreen,
-  "/productlist": ProductListScreen,
-  "/createproduct": ProductCreateScreen
+  "/dashboard-products": ProductListScreen,
+  "/dashboard-create-product": ProductCreateScreen
 };
 
 const router = async () => {

@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import data from "./data";
+import path from 'path';
 import mongoose from "mongoose";
 import config from "./config";
 import bodyParser from "body-parser";
@@ -32,6 +33,11 @@ app.use("/api/products", productRouter);
 app.use("/api/paypal/cliendId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
 });
+// app.use('/uploads', express.static(path.join(__dirname, '/../uploads')));
+// app.use(express.static(path.join(__dirname, '/../frontend')));
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, '/../frontend/index.html'));
+// });
 
 // Mock Products Data -> To remove later
 // app.get("/api/products", (req, res) => {

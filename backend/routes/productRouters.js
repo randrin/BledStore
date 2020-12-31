@@ -67,7 +67,7 @@ productRouter.put(
       product.countInStock = req.body.countInStock;
       const productUpdated = await product.save();
       if (productUpdated) {
-        res.status(201).send({
+        res.send({
           message: "Product Updated successfully.",
           product: productUpdated,
         });

@@ -7,7 +7,7 @@ const ProductCreateScreen = {
     document
     .getElementById("back-to-products")
     .addEventListener("click", async () => {
-      document.location.hash = `/productlist`;
+      document.location.hash = `/dashboard-products`;
     });
     document
     .getElementById("create-product-form")
@@ -27,7 +27,7 @@ const ProductCreateScreen = {
       if (data.error) {
         showMessage(data.error);
       } else {
-        document.location.hash = `/productlist`;
+        document.location.hash = `/dashboard-products`;
       }
     });
   },
@@ -44,19 +44,19 @@ const ProductCreateScreen = {
                         <ul class="form-items form-items-large">
                         <li>
                             <label for="name">Name</label>
-                            <input type="text" name="name" id="name" />
+                            <input type="text" name="name" id="name" placeholder="Insert the product name" />
                         </li>
                         <li>
                             <label for="price">Price</label>
-                            <input type="number" name="price" id="price" />
+                            <input type="number" name="price" id="price" placeholder="Insert the product price" />
                         </li>
                         <li>
                             <label for="image">Image (680 x 830)</label>
-                            <input type="text" name="image" id="image" />
+                            <input type="text" name="image" id="image" placeholder="Select the product image" />
                         </li>
                         <li>
                             <label for="brand">Brand</label>
-                            <input type="text" name="brand" id="brand" />
+                            <input type="text" name="brand" id="brand" placeholder="Insert the product brand" />
                         </li>
                         <li>
                             <label for="countInStock">Count In Stock</label>
@@ -64,11 +64,11 @@ const ProductCreateScreen = {
                         </li>
                         <li>
                             <label for="category">Category</label>
-                            <input type="text" name="category" id="category" />
+                            <input type="text" name="category" id="category" placeholder="Insert the product category" />
                         </li>
                         <li>
                             <label for="description">Description</label>
-                            <textarea rows="10" name="description" id="description"></textarea>
+                            <textarea rows="10" name="description" id="description" placeholder="Insert the product description"></textarea>
                         </li>
                         <li>
                             <button type="submit" class="cta-button primary">Create</button>

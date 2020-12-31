@@ -6,12 +6,12 @@ const ProductListScreen = {
     document
       .getElementById("create-product-button")
       .addEventListener("click", async () => {
-        document.location.hash = "/createproduct";
+        document.location.hash = "/dashboard-create-product";
       });
     const editButtons = document.getElementsByClassName("edit-product-button");
     Array.from(editButtons).forEach((editButton) => {
       editButton.addEventListener("click", () => {
-        document.location.hash = `/productedit/${editButton.id}`;
+        document.location.hash = `/product/${editButton.id}/edit`;
       });
     });
   },

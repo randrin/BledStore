@@ -1,4 +1,4 @@
-import { hideLoading, parseRequestUrl, showLoading } from "../utils";
+import { hideLoading, parseRequestUrl, showLoading, showMessage } from "../utils";
 import { getProduct, productUpdate, uploadProductImage } from "../api";
 import DashboardMenu from "../components/DashboardMenu";
 
@@ -8,7 +8,7 @@ const ProductEditScreen = {
     document
     .getElementById("back-to-products")
     .addEventListener("click", async () => {
-      document.location.hash = `/productlist`;
+      document.location.hash = `/dashboard-products`;
     });
     document
     .getElementById("edit-product-form")
@@ -29,13 +29,12 @@ const ProductEditScreen = {
       if (data.error) {
         showMessage(data.error);
       } else {
-        document.location.hash = `/productlist`;
+        document.location.hash = `/dashboard-products`;
       }
     });
     document
     .getElementById('image-file')
     .addEventListener('change', async (e) => {
-      debugger
       const file = e.target.files[0];
       const formData = new FormData();
       formData.append('image', file);

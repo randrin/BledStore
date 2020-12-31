@@ -70,7 +70,7 @@ export const productUpdate = async ({
         description,
       },
     });
-    if (response.statusText !== "Created") {
+    if (response.statusText !== "OK") {
       throw new Error(response.data.message);
     }
     return response.data;
@@ -79,10 +79,10 @@ export const productUpdate = async ({
   }
 };
 
-export const uploadProductImage = async ({formData}) => {
+export const uploadProductImage = async (formData) => {
   try {
     console.log('formData: ', formData)
-    const { token } = getUserInfo();
+    const { token } = getUserInfos();
     const response = await axios({
       url: `${apiUrl}/api/uploads`,
       method: 'POST',

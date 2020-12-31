@@ -41,7 +41,10 @@ const ProductScreen = {
                 Price: <strong>${product.price}</strong>
               </li>
               <li>
-                Brand: <div>${product.brand}</div>
+                Brand: <span>${product.brand}</span>
+              </li>
+              <li>
+                Description: <div class="product-description">${product.description}</div>
               </li>
             </ul>
           </div>
