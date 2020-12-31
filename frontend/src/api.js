@@ -79,26 +79,47 @@ export const productUpdate = async ({
   }
 };
 
-export const uploadProductImage = async (formData) => {
+export const deleteProduct = async (productId) => {
   try {
-    console.log('formData: ', formData)
     const { token } = getUserInfos();
     const response = await axios({
-      url: `${apiUrl}/api/uploads`,
-      method: 'POST',
+      url: `${apiUrl}/api/products/${productId}`,
+      method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'multipart/form-data',
-      },
-      data: formData,
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
     });
-    if (response.statusText !== 'Created') {
+    if (response.statusText !== "OK") {
       throw new Error(response.data.message);
     } else {
       return response.data;
     }
-  } catch (err) {
-    return { error: err.response.data.message || err.message };
+  } catch (error) {
+    return { error: error.response.data.message || error.message };
+  }
+};
+
+export const uploadProductImage = async (formData) => {
+  try {
+    console.log("formData: ", formData);
+    const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/uploads`,
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    });
+    if (response.statusText !== "Created") {
+      throw new Error(response.data.message);
+    } else {
+      return response.data;
+    }
+  } catch (error) {
+    return { error: error.response.data.message || error.message };
   }
 };
 
@@ -267,8 +288,8 @@ export const getOrder = async (id) => {
       throw new Error(response.data.message);
     }
     return response.data;
-  } catch (err) {
-    return { error: err.message };
+  } catch (error) {
+    return { error: error.message };
   }
 };
 

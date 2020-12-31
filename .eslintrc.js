@@ -22,6 +22,7 @@ module.exports = {
       'no-use-before-define': 0,
       'no-undef': 0,
       'import/order': 0,
-      'no-alert': 0
+      'no-alert': 0,
+      'no-restricted-globals': 0
     },
   };
