@@ -26,7 +26,7 @@ export const setUserInfos = ({
 export const getUserInfos = () => {
   return localStorage.getItem("userInfos")
     ? JSON.parse(localStorage.getItem("userInfos"))
-    : { name: "", password: "", email: "" };
+    : { name: "", password: "", email: "" , isAdmin: false};
 };
 
 export const clearUserInfos = () => {
