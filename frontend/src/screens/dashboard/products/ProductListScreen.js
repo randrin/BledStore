@@ -1,7 +1,7 @@
-/* eslint-disable no-restricted-globals */
 import DashboardMenu from "../../../components/DashboardMenu";
-import { deleteProduct, getProducts } from "../../../api";
+import { deleteProduct } from "../../../api";
 import { hideLoading, rerender, showLoading, showMessage } from "../../../utils";
+import { getDashboardProducts } from "../../../api/dashboard/ApiProducts";
 
 const ProductListScreen = {
   after_render: async () => {
@@ -33,7 +33,11 @@ const ProductListScreen = {
     });
   },
   render: async () => {
-    const products = await getProducts();
+    const products = await getDashboardProducts();
+    // TODO: Controll get reponse if there are error, redirect to message informations
+    // if (orders.error) {
+    //   document.location.hash = '/';
+    // }
     return `
     <div class="dashboard">
     ${DashboardMenu.render({ selected: "products" })}
@@ -49,12 +53,12 @@ const ProductListScreen = {
         <table>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>ID PRODUCT</th>
               <th>NAME</th>
               <th>PRICE</th>
               <th>CATEGORY</th>
               <th>BRAND</th>
-              <th class="tr-action">ACTION</th>
+              <th class="tr-action">ACTIONS</th>
             <tr>
           </thead>
           <tbody>
@@ -64,7 +68,7 @@ const ProductListScreen = {
             <tr>
               <td>${product._id}</td>
               <td>${product.name}</td>
-              <td>${product.price}</td>
+              <td>${product.price} €</td>
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>

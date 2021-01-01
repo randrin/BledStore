@@ -1,9 +1,29 @@
 import express from "express";
 import Order from "../models/orderModel";
 import expressAyncHandler from "express-async-handler";
-import { isAuth } from "../utils";
+import { isAdmin, isAuth } from "../utils";
 
 const orderRouter = express.Router();
+
+// DASHBOARD
+orderRouter.get(
+  "/dashboard",
+  isAuth,
+  isAdmin,
+  expressAyncHandler(async (req, res) => {
+    const orders = await Order.find({}).populate("user");
+    res.send(orders);
+  })
+);
+
+// STORE
+orderRouter.get(
+  "/",
+  expressAyncHandler(async (req, res) => {
+    const orders = await Order.find({}).populate("user");
+    res.send(orders);
+  })
+);
 
 orderRouter.get(
   "/mineOrders",

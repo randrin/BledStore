@@ -5,6 +5,18 @@ import { isAdmin, isAuth } from "../utils";
 
 const productRouter = express.Router();
 
+// DASHBOARD
+productRouter.get(
+  "/dashboard",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const products = await Product.find({});
+    res.send(products);
+  })
+);
+
+// STORE
 productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {

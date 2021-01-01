@@ -558,6 +558,7 @@ td {
     padding: 1rem !important;
 }
 
+.order-list button,
 .product-list button {
     font-size: 1.3rem;
     padding: 0.5rem;
@@ -572,4 +573,9 @@ td {
     float: right;
     position: absolute;
     right: 10px;
+}
+
+.order-user-email {
+    font-size: 13px;
+    padding-top: 5px;
 }

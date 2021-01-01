@@ -15,6 +15,7 @@ import RegisterScreen from "./screens/store/RegisterScreen.js";
 import ShippingScreen from "./screens/store/ShippingScreen.js";
 import SigninScreen from "./screens/store/SigninScreen.js";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
+import OrderListScreen from "./screens/dashboard/orders/OrderListScreen.js";
 
 const routes = {
   "/": HomeScreen,
@@ -31,7 +32,8 @@ const routes = {
   "/placeorder": PlaceOrderScreen,
   "/dashboard": DashboardScreen,
   "/dashboard-products": ProductListScreen,
-  "/dashboard-create-product": ProductCreateScreen
+  "/dashboard-create-product": ProductCreateScreen,
+  "/dashboard-orders": OrderListScreen,
 };
 
 const router = async () => {

@@ -1,6 +1,7 @@
 import { getMineOrders, update } from "../../api";
 import { setUserInfos, getUserInfos, clearUserInfos } from "../../localStorage";
 import { hideLoading, showLoading, showMessage } from "../../utils";
+import moment from 'moment';
 
 const ProfileScreen = {
   after_render: () => {
@@ -75,7 +76,7 @@ const ProfileScreen = {
         <thead>
           <tr>
             <th>ORDER ID</th>
-            <th>DATE</th>
+            <th>DATE (dd/MM/yyyy)</th>
             <th>TOTAL</th>
             <th>PAID</th>
             <th>DELIVERED</th>
@@ -91,16 +92,16 @@ const ProfileScreen = {
                     (order) => `
         <tr>
           <td>${order._id}</td>
-          <td>${order.createdAt}</td>
+          <td>${moment(order.createdAt).format('DD/MM/YYYY')}</td>
           <td>${order.totalPrice}</td>
           <td>${
             order.paidAt
-              ? `<span class="success font-bold">${order.paidAt}</span>`
+              ? `<span class="success font-bold">${moment(order.paidAt).format('DD/MM/YYYY')}</span>`
               : `<span class="error font-bold">No</span>`
           }</td>
           <td>${
             order.deliveryAt
-              ? `<span class="success font-bold">${order.deliveryAt}</span>`
+              ? `<span class="success font-bold">${moment(order.deliveryAt).format('DD/MM/YYYY')}</span>`
               : `<span class="error font-bold">No</span>`
           }</td>
           <td><a href="/#/order/${order._id}">DETIALS</a> </td>
