@@ -66,12 +66,12 @@ const OrderListScreen = {
               <td>${order.user.name} <br/><span class="order-user-email">${order.user.email}</span></td>
               <td>${
                 order.paidAt
-                  ? `<span class="success font-bold">${moment(order.paidAt).format('DD/MM/YYYY')}</span>`
+                  ? `<span class="success font-bold">${moment(order.paidAt).format('DD/MM/YYYY HH:mm:ss')}</span>`
                   : `<span class="error font-bold">No</span>`}
               </td>
               <td>${
-                order.deliveryAt
-                  ? `<span class="success font-bold">${order.deliveryAt}</span>`
+                order.deliveredAt
+                  ? `<span class="success font-bold">${moment(order.deliveredAt).format('DD/MM/YYYY HH:mm:ss')}</span>`
                   : `<span class="error font-bold">No</span>`}
               </td>
               <td>

@@ -21,3 +21,25 @@ export const getDashboardOrders = async () => {
     return { error: error.response.data.message || error.message };
   }
 };
+
+export const deliverOrder = async (orderId) => {
+  try {
+    const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/orders/${orderId}/deliver`,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    return {
+      error: error.response ? error.response.data.message : error.message,
+    };
+  }
+};

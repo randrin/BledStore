@@ -76,7 +76,7 @@ const ProfileScreen = {
         <thead>
           <tr>
             <th>ORDER ID</th>
-            <th>DATE (dd/MM/yyyy)</th>
+            <th>DATE (dd/MM/yyyy HH:mm:ss)</th>
             <th>TOTAL</th>
             <th>PAID</th>
             <th>DELIVERED</th>
@@ -92,16 +92,16 @@ const ProfileScreen = {
                     (order) => `
         <tr>
           <td>${order._id}</td>
-          <td>${moment(order.createdAt).format('DD/MM/YYYY')}</td>
-          <td>${order.totalPrice}</td>
+          <td>${moment(order.createdAt).format('DD/MM/YYYY HH:mm:ss')}</td>
+          <td>${order.totalPrice} €</td>
           <td>${
             order.paidAt
-              ? `<span class="success font-bold">${moment(order.paidAt).format('DD/MM/YYYY')}</span>`
+              ? `<span class="success font-bold">${moment(order.paidAt).format('DD/MM/YYYY HH:mm:ss')}</span>`
               : `<span class="error font-bold">No</span>`
           }</td>
           <td>${
             order.deliveryAt
-              ? `<span class="success font-bold">${moment(order.deliveryAt).format('DD/MM/YYYY')}</span>`
+              ? `<span class="success font-bold">${moment(order.deliveryAt).format('DD/MM/YYYY HH:mm:ss')}</span>`
               : `<span class="error font-bold">No</span>`
           }</td>
           <td><a href="/#/order/${order._id}">DETIALS</a> </td>

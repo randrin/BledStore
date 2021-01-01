@@ -575,7 +575,9 @@ td {
     right: 10px;
 }
 
-.order-user-email {
-    font-size: 13px;
+.order-user-email,
+.order-user-paid,
+.order-user-delivered {
+    font-size: 14px;
     padding-top: 5px;
 }

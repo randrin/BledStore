@@ -16,6 +16,22 @@ orderRouter.get(
   })
 );
 
+orderRouter.put(
+  "/:id/deliver",
+  isAuth,
+  expressAyncHandler(async (req, res) => {
+    const order = await Order.findById(req.params.id);
+    if (order) {
+      order.isDelivered = true;
+      order.deliveredAt = Date.now();
+      const updatedOrder = await order.save();
+      res.send({ message: "Order Delivered successfully.", order: updatedOrder });
+    } else {
+      res.status(404).send({ message: "Order Not Found" });
+    }
+  })
+);
+
 // STORE
 orderRouter.get(
   "/",

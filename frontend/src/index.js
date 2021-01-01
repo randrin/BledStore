@@ -16,12 +16,14 @@ import ShippingScreen from "./screens/store/ShippingScreen.js";
 import SigninScreen from "./screens/store/SigninScreen.js";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 import OrderListScreen from "./screens/dashboard/orders/OrderListScreen.js";
+import OrderEditScreen from "./screens/dashboard/orders/OrderEditScreen.js";
 
 const routes = {
   "/": HomeScreen,
   "/product/:id/edit": ProductEditScreen,
   "/product/:id": ProductScreen,
   "/order/:id": OrderScreen,
+  "/order/:id/edit": OrderEditScreen,
   "/cart/:id": CartScreen,
   "/cart": CartScreen,
   "/signin": SigninScreen,

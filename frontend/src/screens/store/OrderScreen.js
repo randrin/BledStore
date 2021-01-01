@@ -6,6 +6,7 @@ import {
   showMessage,
 } from "../../utils";
 import { getOrder, getPaypalClientId, payOrder } from "../../api";
+import moment from 'moment';
 
 const addPaypalSdk = async (totalPrice) => {
   const clientId = await getPaypalClientId();
@@ -104,7 +105,7 @@ const OrderScreen = {
             </div>
             ${
               isDelivered
-                ? `<div class="success">Delivered at ${deliveredAt}</div>`
+                ? `<div class="success">Delivered at ${moment(deliveredAt).format('DD/MM/YYYY HH:mm:ss')}</div>`
                 : `<div class="error">Not Delivered</div>`
             }
              
@@ -116,7 +117,7 @@ const OrderScreen = {
             </div>
             ${
               isPaid
-                ? `<div class="success">Paid at ${paidAt}</div>`
+                ? `<div class="success">Paid at ${moment(paidAt).format('DD/MM/YYYY HH:mm:ss')}</div>`
                 : `<div class="error">Not Paid</div>`
             }
           </div>
