@@ -1,12 +1,12 @@
-import { createOrder } from "../api";
-import Checkout from "../components/Checkout";
+import { createOrder } from "../../api";
+import Checkout from "../../components/Checkout";
 import {
   cleanCart,
   getCartItems,
   getPaymentInfos,
   getShippingInfos,
-} from "../localStorage";
-import { hideLoading, showLoading, showMessage } from "../utils";
+} from "../../localStorage";
+import { hideLoading, showLoading, showMessage } from "../../utils";
 
 const convertCartToOrder = () => {
   const orderItems = getCartItems();

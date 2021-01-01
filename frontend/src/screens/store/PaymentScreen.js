@@ -1,6 +1,6 @@
-import Checkout from "../components/Checkout";
-import { getUserInfos, setPaymentInfos } from "../localStorage";
-import { hideLoading, showLoading } from "../utils";
+import Checkout from "../../components/Checkout";
+import { getUserInfos, setPaymentInfos } from "../../localStorage";
+import { hideLoading, showLoading } from "../../utils";
 
 const PaymentScreen = {
   after_render: () => {

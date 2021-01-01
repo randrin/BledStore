@@ -1,6 +1,6 @@
-import Checkout from "../components/Checkout";
-import { getUserInfos, getShippingInfos, setShippingInfos } from "../localStorage";
-import { hideLoading, showLoading } from "../utils";
+import Checkout from "../../components/Checkout";
+import { getUserInfos, getShippingInfos, setShippingInfos } from "../../localStorage";
+import { hideLoading, showLoading } from "../../utils";
 
 const ShippingScreen = {
   after_render: () => {

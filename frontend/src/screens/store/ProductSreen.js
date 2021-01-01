@@ -1,6 +1,6 @@
-import { getProduct } from "../api";
-import Rating from "../components/rating";
-import { hideLoading, parseRequestUrl } from "../utils";
+import { getProduct } from "../../api";
+import Rating from "../../components/rating";
+import { hideLoading, parseRequestUrl } from "../../utils";
 
 const ProductScreen = {
   after_render: () => {

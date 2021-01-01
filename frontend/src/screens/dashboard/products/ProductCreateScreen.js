@@ -1,6 +1,6 @@
-import { productCreate } from "../api";
-import DashboardMenu from "../components/DashboardMenu";
-import { hideLoading, showLoading } from "../utils";
+import { productCreate } from "../../../api";
+import DashboardMenu from "../../../components/DashboardMenu";
+import { hideLoading, showLoading } from "../../../utils";
 
 const ProductCreateScreen = {
   after_render: async () => {
@@ -60,7 +60,7 @@ const ProductCreateScreen = {
                         </li>
                         <li>
                             <label for="countInStock">Count In Stock</label>
-                            <input type="number" name="countInStock" id="countInStock" />
+                            <input type="number" name="countInStock" id="countInStock" placeholder="Insert the stock number product" />
                         </li>
                         <li>
                             <label for="category">Category</label>

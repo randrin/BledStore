@@ -1,5 +1,5 @@
-import DashboardMenu from "../components/DashboardMenu";
-import { getUserInfos } from "../localStorage";
+import DashboardMenu from "../../components/DashboardMenu";
+import { getUserInfos } from "../../localStorage";
 
 const DashboardScreen = {
   after_render: () => {},

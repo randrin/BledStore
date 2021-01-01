@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
-import DashboardMenu from "../components/DashboardMenu";
-import { deleteProduct, getProducts } from "../api";
-import { hideLoading, rerender, showLoading, showMessage } from "../utils";
+import DashboardMenu from "../../../components/DashboardMenu";
+import { deleteProduct, getProducts } from "../../../api";
+import { hideLoading, rerender, showLoading, showMessage } from "../../../utils";
 
 const ProductListScreen = {
   after_render: async () => {

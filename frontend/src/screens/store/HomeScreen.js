@@ -1,6 +1,6 @@
-import { getProducts } from "../api";
-import Rating from "../components/rating";
-import { hideLoading, showLoading } from "../utils";
+import { getProducts } from "../../api";
+import Rating from "../../components/rating";
+import { hideLoading, showLoading } from "../../utils";
 
 const HomeScreen = {
   render: async () => {

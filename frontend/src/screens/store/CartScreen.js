@@ -1,6 +1,6 @@
-import { getProduct } from "../api";
-import { getCartItems, setCartItems } from "../localStorage";
-import { parseRequestUrl, rerender } from "../utils";
+import { getProduct } from "../../api";
+import { getCartItems, setCartItems } from "../../localStorage";
+import { parseRequestUrl, rerender } from "../../utils";
 
 const addToCart = (item, forceUpdate = false) => {
   let cartItems = getCartItems();
