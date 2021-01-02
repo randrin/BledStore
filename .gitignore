@@ -1,4 +1,5 @@
 # dependencies
+.history
 dist
 /dist
 node_modules
