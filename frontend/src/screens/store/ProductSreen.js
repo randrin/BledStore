@@ -1,5 +1,5 @@
 import { getProduct } from "../../api";
-import Rating from "../../components/rating";
+import Rating from "../../components/rating.js";
 import { hideLoading, parseRequestUrl } from "../../utils";
 
 const ProductScreen = {
