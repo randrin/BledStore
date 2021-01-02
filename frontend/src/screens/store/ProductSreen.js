@@ -1,13 +1,13 @@
 import { getProduct } from "../../api";
-import Rating from "../../components/rating.js";
+import Rating from "../../components/rating";
 import { hideLoading, parseRequestUrl } from "../../utils";
 
 const ProductScreen = {
   after_render: () => {
     const request = parseRequestUrl();
-    document.getElementById('add-button').addEventListener('click', () => {
-      document.location.hash = `/cart/${request.id}`
-    })
+    document.getElementById("add-button").addEventListener("click", () => {
+      document.location.hash = `/cart/${request.id}`;
+    });
   },
   render: async () => {
     const request = parseRequestUrl();
@@ -16,7 +16,7 @@ const ProductScreen = {
       hideLoading();
       return `<h1>${product.error}</h1>`;
     }
-    
+
     return `<div class="content">
         <div class="back-to-result">
           <a href='/#/'>Back to Home</a>
@@ -34,7 +34,7 @@ const ProductScreen = {
               <li>
                 ${Rating.render({
                   value: product.rating,
-                  text: `${product.numReviews} reviews`
+                  text: `${product.numReviews} reviews`,
                 })}
               </li>
               <li>
@@ -44,7 +44,9 @@ const ProductScreen = {
                 Brand: <span>${product.brand}</span>
               </li>
               <li>
-                Description: <div class="product-description">${product.description}</div>
+                Description: <div class="product-description">${
+                  product.description
+                }</div>
               </li>
             </ul>
           </div>
@@ -62,7 +64,12 @@ const ProductScreen = {
                   }
               </li>
               <li>
-                  <button id="add-button" class="fw primary">Add to Cart </div>
+              ${
+                product.countInStock > 0
+                  ? `<button id="add-button" class="fw primary">Add to Cart </button>`
+                  : `<button id="add-button" class="fw primary disable-button">Add to Cart </button>`
+              }
+              </li>
             </ul>
         </div>
         </div>

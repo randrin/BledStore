@@ -1,7 +1,7 @@
 
 
 import { getProducts } from "../../api/store/ApiProducts";
-import Rating from "../../components/rating.js";
+import Rating from "../../components/rating";
 import { hideLoading, showLoading } from "../../utils";
 
 const HomeScreen = {
