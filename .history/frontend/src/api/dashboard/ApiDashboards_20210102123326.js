@@ -1,0 +1,24 @@
+import { getUserInfos } from "../../localStorage";
+
+
+
+export const getDashboardInfos = () => {
+    try {
+        const { token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUr}/api/products/${productId}`,
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    } else {
+      return response.data;
+    }
+    } catch (error) {
+        return { error: error.response.data.message || error.message };
+    }
+}

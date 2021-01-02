@@ -1,0 +1,8 @@
+const HomeScreen = {
+    render: () => {
+        return 
+        <>
+        
+        </>
+    }
+}
