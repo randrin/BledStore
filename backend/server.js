@@ -7,8 +7,9 @@ import config from "./config";
 import bodyParser from "body-parser";
 import userRouter from "./routes/userRoutes";
 import orderRouter from "./routes/orderRoutes";
-import productRouter from "./routes/productRouters";
-import uploadRouter from "./routes/uploadRouters";
+import productRouter from "./routes/productRoutes";
+import uploadRouter from "./routes/uploadRoutes";
+import dashboardRouter from "./routes/dashboardRoutes";
 
 mongoose
   .connect(config.MONGODB_URL, {
@@ -26,9 +27,10 @@ mongoose
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
+app.use("/api/dashboards", dashboardRouter);
+app.use("/api/orders", orderRouter);
 app.use('/api/uploads', uploadRouter);
 app.use("/api/users", userRouter);
-app.use("/api/orders", orderRouter);
 app.use("/api/products", productRouter);
 app.use("/api/paypal/cliendId", (req, res) => {
   res.send({ clientId: config.PAYPAL_CLIENT_ID });
