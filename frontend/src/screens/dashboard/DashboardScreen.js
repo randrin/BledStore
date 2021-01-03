@@ -50,20 +50,20 @@ const DashboardScreen = {
               <div class="summary-title color1">
                 <span><i class="fa fa-users"></i> Users</span>
               </div>
-              <div class="summary-body">${summary.users[0].numUsers}</div>
+              <div class="summary-body">${summary.users[0] ? summary.users[0].numUsers : 0}</div>
             </li>
             <li>
               <div class="summary-title color2">
                 <span><i class="fa fa-gift"></i> Orders</span>
               </div>
-              <div class="summary-body">${summary.orders[0].numOrders}</div>
+              <div class="summary-body">${summary.orders[0] ? summary.orders[0].numOrders : 0}</div>
             </li>
             <li>
               <div class="summary-title color3">
                 <span><i class="fa fa-area-chart"></i> Sales</span>
               </div>
               <div class="summary-body">${
-                summary.orders[0].totalSales
+                summary.orders[0] ? summary.orders[0].totalSales : 0
               } <i class="fa fa-euro"></i></div>
             </li>
           </ul>

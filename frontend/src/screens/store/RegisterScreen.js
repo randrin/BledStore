@@ -1,6 +1,12 @@
 import { register } from "../../api";
 import { setUserInfos, getUserInfos } from "../../localStorage";
-import { hideLoading, redirectUser, showLoading, showMessage } from "../../utils";
+import {
+  hideLoading,
+  redirectUser,
+  showLoading,
+  showMessage,
+} from "../../utils";
+import { modalMessage } from "../../config";
 
 const RegisterScreen = {
   after_render: () => {
@@ -9,19 +15,26 @@ const RegisterScreen = {
       .addEventListener("submit", async (e) => {
         e.preventDefault();
         showLoading();
-        const data = await register({
-          email: document.getElementById("email").value,
-          password: document.getElementById("password").value,
-          name: document.getElementById("name").value,
-          confirmPassword: document.getElementById("confirm-password").value,
-        });
-        hideLoading();
-        if (data.error) {
-          showMessage(data.error);
+        if (
+          document.getElementById("password").value !==
+          document.getElementById("confirm-password").value
+        ) {
+          showMessage(modalMessage.PASSWORD_AMD_CONFIRM);
         } else {
-          setUserInfos(data);
-          redirectUser();
+          const data = await register({
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+            name: document.getElementById("name").value,
+            confirmPassword: document.getElementById("confirm-password").value,
+          });
+          if (data.error) {
+            showMessage(data.error);
+          } else {
+            setUserInfos(data);
+            redirectUser();
+          }
         }
+        hideLoading();
       });
   },
   render: () => {
@@ -37,19 +50,19 @@ const RegisterScreen = {
                     </li>
                     <li>
                         <label for="name">Name</label>
-                        <input id="name" name="name" type="text" placeholder="Enter your name" />
+                        <input id="name" name="name" type="text" placeholder="Enter your name" required />
                     </li>
                     <li>
                         <label for="email">Email</label>
-                        <input id="email" name="email" type="text" placeholder="Enter your email" />
+                        <input id="email" name="email" type="text" placeholder="Enter your email" required />
                     </li>
                     <li>
                         <label for="password">Password</label>
-                        <input id="password" name="password" type="password" placeholder="Enter your password" />
+                        <input id="password" name="password" type="password" placeholder="Enter your password" required />
                     </li>
                     <li>
                         <label for="confirm-password">Confirm Password</label>
-                        <input id="confirm-password" name="confirm-password" type="password" placeholder="Confirm your name" />
+                        <input id="confirm-password" name="confirm-password" type="password" placeholder="Confirm your name" required />
                     </li>
                     <li>
                         <button type="submit" class="primary">Register</button>

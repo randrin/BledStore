@@ -143,6 +143,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
+}
+
+main {
+    position: relative;
+    /* top: 50px; */
 }
 
 header a {
@@ -161,7 +167,7 @@ header a {
 }
 
 .menu-brand a {
-    font-size: 1.8rem;
+    font-size: 1.9rem;
 }
 
 .brand a:hover,
@@ -353,6 +359,23 @@ footer {
     padding: 0.5rem;
 }
 
+.cart-items {
+    top: -10px;
+    position: relative;
+    left: -10px;
+    max-height: 10px;
+    background: #f08040;
+    padding: 2px 5px;
+    border: 2px solid #203040;
+    border-radius: 21px;
+    align-items: center;
+    font-size: 15px;
+}
+
+.menu-brand a:hover .cart-items {
+    background: #ffffff !important;
+}
+
 /* Sigin In */
 .form-container {
     display: flex;
@@ -510,6 +533,26 @@ td {
     padding: 0.5rem;
 }
 
+.profile-order-not-found {
+    padding: 50px 0px;
+    text-align: center;
+    border: 2px solid #f08040;
+    border-radius: 5px;
+}
+
+.profile-order-not-found-actions {
+    display: grid;
+}
+
+.profile-order-not-found-actions span {
+    padding: 10px 0px;
+}
+
+.profile-order-not-found-icon {
+    font-size: 100px;
+    color: #f08040;
+}
+
 /* Dashboard */
 .dashboard {
     display: flex;
@@ -642,4 +685,19 @@ td {
     font-size: 12px;
     font-weight: 600;
     color: #000000;
+}
+
+/* Modal Messages */
+#message-overlay-content {
+    text-align: center;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 47.9375em)  {
+    .menu-brand a {
+        font-size: 1.6rem;
+    }
+    .brand a {
+        font-size: 2.5rem;
+    }
 }

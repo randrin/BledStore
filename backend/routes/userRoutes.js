@@ -1,10 +1,13 @@
 import express from "express";
+import bcrypt from "bcryptjs";
 import User from "../models/userModel";
 import expressAyncHandler from "express-async-handler";
 import { generateToken, isAuth } from "../utils";
+import { modalMessage } from "../config";
 
 const userRouter = express.Router();
 
+// DASHBOARD
 userRouter.get(
   "/createadmin",
   expressAyncHandler(async (req, res) => {
@@ -23,15 +26,22 @@ userRouter.get(
   })
 );
 
+// STORE
 userRouter.post(
   "/signin",
   expressAyncHandler(async (req, res) => {
     const signinUser = await User.findOne({
       email: req.body.email,
-      password: req.body.password,
     });
     if (!signinUser) {
-      res.status(401).send({ message: "Invalid Email or Password. Try again" });
+      res.status(404).send({ message: modalMessage.USER_NOT_FOUND });
+    }
+    const userPassword = await bcrypt.compare(
+      req.body.password,
+      signinUser.password
+    );
+    if (!userPassword) {
+      res.status(401).send({ message: modalMessage.INVALID_PASSWORD });
     } else {
       res.send({
         _id: signinUser._id,
@@ -50,7 +60,7 @@ userRouter.post(
     const dataUser = new User({
       name: req.body.name,
       email: req.body.email,
-      password: req.body.password,
+      password: await bcrypt.hash(req.body.password, 16),
     });
     const user = await dataUser.save();
     if (!user) {
