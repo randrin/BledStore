@@ -1,5 +1,5 @@
 import { getProduct } from "../../api";
-// import Rating from "../../components/rating";
+import Rating from "../../components/Rating";
 import { hideLoading, parseRequestUrl } from "../../utils";
 
 const ProductScreen = {
@@ -31,7 +31,12 @@ const ProductScreen = {
                 <h1>${product.name}</h1>
                 <p>${product.category}</p>
               </li>
-              
+              <li>
+                ${Rating.render({
+                  value: product.rating,
+                  text: `${product.numReviews} reviews`,
+                })}
+              </li>
               <li>
                 Price: <strong>${product.price}</strong>
               </li>
