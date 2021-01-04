@@ -10,10 +10,10 @@ import ProductCreateScreen from "./screens/dashboard/products/ProductCreateScree
 import ProductEditScreen from "./screens/dashboard/products/ProductEditScreen.js";
 import ProductListScreen from "./screens/dashboard/products/ProductListScreen.js";
 import ProductScreen from "./screens/store/ProductSreen.js";
-import ProfileScreen from "./screens/store/ProfileScreen.js";
-import RegisterScreen from "./screens/store/RegisterScreen.js";
+import ProfileScreen from "./screens/store/auth/ProfileScreen.js";
+import RegisterScreen from "./screens/store/auth/RegisterScreen.js";
 import ShippingScreen from "./screens/store/ShippingScreen.js";
-import SigninScreen from "./screens/store/SigninScreen.js";
+import SigninScreen from "./screens/store/auth/SigninScreen.js";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 import OrderListScreen from "./screens/dashboard/orders/OrderListScreen.js";
 import OrderEditScreen from "./screens/dashboard/orders/OrderEditScreen.js";

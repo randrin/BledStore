@@ -1,8 +1,8 @@
-import { getMineOrders, update } from "../../api";
-import { setUserInfos, getUserInfos, clearUserInfos } from "../../localStorage";
-import { hideLoading, showLoading, showMessage } from "../../utils";
+import { getMineOrders, update } from "../../../api";
+import { setUserInfos, getUserInfos, clearUserInfos } from "../../../localStorage";
+import { hideLoading, showLoading, showMessage } from "../../../utils";
 import moment from "moment";
-import { modalMessage } from "../../config";
+import { modalMessage } from "../../../config";
 
 const ProfileScreen = {
   after_render: () => {
