@@ -1,6 +1,7 @@
 import { hideLoading, parseRequestUrl, showLoading, showMessage } from "../../../utils";
 import { getProduct, productUpdate, uploadProductImage } from "../../../api";
 import DashboardMenu from "../../../components/DashboardMenu";
+import { modalMessage } from "../../../config";
 
 const ProductEditScreen = {
   after_render: async () => {
@@ -63,49 +64,49 @@ const ProductEditScreen = {
         <form id="edit-product-form">
           <ul class="form-items form-items-large">
             <li>
-              <label for="name">Name</label>
+              <label for="name">${modalMessage.NAME_PRODUCT} <span class="form-required">*</span></label>
               <input type="text" name="name" value="${
                 product.name
               }" id="name" />
             </li>
             <li>
-              <label for="price">Price</label>
+              <label for="price">${modalMessage.PRICE} <span class="form-required">*</span></label>
               <input type="number" name="price" value="${
                 product.price
               }" id="price" />
             </li>
             <li>
-              <label for="image">Image (680 x 830)</label>
+              <label for="image">${modalMessage.IMAGE} <span class="form-required">*</span></label>
               <input type="text" name="image" value="${
                 product.image
               }" id="image" />
               <input type="file" name="image-file" id="image-file" />
             </li>
             <li>
-              <label for="brand">Brand</label>
+              <label for="brand">${modalMessage.BRAND} <span class="form-required">*</span></label>
               <input type="text" name="brand" value="${
                 product.brand
               }" id="brand" />
             </li>
             <li>
-              <label for="countInStock">Count In Stock</label>
+              <label for="countInStock">${modalMessage.COUNT_IN_STOCK} <span class="form-required">*</span></label>
               <input type="number" name="countInStock" value="${
                 product.countInStock
               }" id="countInStock" />
             </li>
             <li>
-              <label for="category">Category</label>
+              <label for="category">${modalMessage.CATEGORY} <span class="form-required">*</span></label>
               <input type="text" name="category" value="${
                 product.category
               }" id="category" />
             </li>
             <li>
-              <label for="description">Description</label>
+              <label for="description">${modalMessage.DESCRIPTION} <span class="form-required">*</span></label>
               <textarea rows="10" name="description" id="description">${
                 product.description}</textarea>
             </li>
             <li>
-              <button type="submit" class="cta-button primary">Update</button>
+              <button type="submit" class="cta-button primary">${modalMessage.UPDATE} <i class="fa fa-send"></i></button>
             </li>
           </ul>
         </form>
@@ -113,7 +114,7 @@ const ProductEditScreen = {
     </div>
     <hr />
     <button id="back-to-products" class="primary">
-        Back to Products List
+    <i class="fa fa-angle-double-left"></i> ${modalMessage.BACK_DASHBOARD_PRODUCTS}
     </button>
 </div>
 </div>`;

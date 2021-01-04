@@ -40,10 +40,14 @@ const RegisterScreen = {
       const TEXT = "text";
   
       const passwordIcon = document.querySelector(".preview_icon");
+      const confirmPasswordIcon = document.querySelector(".preview_icon_confirm");
       const passwordField = document.querySelector(".password_input");
+      const confirmPasswordField = document.querySelector(".confirm_password_input");
       const eyeIcon = document.querySelector(".show-hide-password");
+      const eyeIconConfirm = document.querySelector(".show-hide-password-confirm");
   
       eyeIcon.classList.add("fa-eye");
+      eyeIconConfirm.classList.add("fa-eye");
   
       const togglePassword = () => {
         if (passwordField.type === PASSWORD) {
@@ -58,7 +62,21 @@ const RegisterScreen = {
           eyeIcon.classList.remove("fa-eye-slash");
         }
       };
+      const togglePasswordConfirm = () => {
+        if (confirmPasswordField.type === PASSWORD) {
+          confirmPasswordField.type = TEXT;
+  
+          eyeIconConfirm.classList.remove("fa-eye");
+          eyeIconConfirm.classList.add("fa-eye-slash");
+        } else {
+          confirmPasswordField.type = PASSWORD;
+  
+          eyeIconConfirm.classList.add("fa-eye");
+          eyeIconConfirm.classList.remove("fa-eye-slash");
+        }
+      };
       passwordIcon.addEventListener("click", togglePassword);
+      confirmPasswordIcon.addEventListener("click", togglePasswordConfirm);
   },
   render: () => {
     if (getUserInfos().name) {
@@ -89,8 +107,8 @@ const RegisterScreen = {
                     <li>
                         <label for="confirm-password">${modalMessage.CONFIRM_PASSWORD} <span class="form-required">*</span></label>
                         <input id="confirm-password" name="confirm-password" type="password" class="confirm_password_input" placeholder=${modalMessage.PLACEHOLDER_CONFIRM_PASSWORD} required />
-                        <span class="preview_icon">
-                          <i class="show-hide-password fa"></i>
+                        <span class="preview_icon_confirm">
+                          <i class="show-hide-password-confirm fa"></i>
                         </span>
                     </li>
                     <li>

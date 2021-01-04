@@ -2,6 +2,7 @@ import DashboardMenu from "../../../components/DashboardMenu";
 import { deleteProduct } from "../../../api";
 import { hideLoading, rerender, showLoading, showMessage } from "../../../utils";
 import { getDashboardProducts } from "../../../api/dashboard/ApiProducts";
+import { modalMessage } from '../../../config';
 
 const ProductListScreen = {
   after_render: async () => {
@@ -34,7 +35,7 @@ const ProductListScreen = {
   },
   render: async () => {
     const products = await getDashboardProducts();
-    // TODO: Controll get reponse if there are error, redirect to message informations
+    // TODO: Controll get response if there are error, redirect to message informations
     // if (orders.error) {
     //   document.location.hash = '/';
     // }
@@ -43,9 +44,9 @@ const ProductListScreen = {
     ${DashboardMenu.render({ selected: "products" })}
     <div class="dashboard-content">
       <div class="dashboard-box-title">
-        <h1>Products</h1>
+        <h1>${modalMessage.PRODUCTS}</h1>
         <button id="create-product-button" class="product-create-button primary">
-            Create Product
+        ${modalMessage.CREATE_PRODUCT} <i class="fa fa-angle-double-right"></i>
         </button>
       </div>
       <hr/>
@@ -53,12 +54,12 @@ const ProductListScreen = {
         <table>
           <thead>
             <tr>
-              <th>ID PRODUCT</th>
-              <th>NAME</th>
-              <th>PRICE</th>
-              <th>CATEGORY</th>
-              <th>BRAND</th>
-              <th class="tr-action">ACTIONS</th>
+              <th>${modalMessage.ID_PRODUCT}</th>
+              <th>${modalMessage.NAME_PRODUCT}</th>
+              <th>${modalMessage.PRICE}</th>
+              <th>${modalMessage.CATEGORY}</th>
+              <th>${modalMessage.BRAND}</th>
+              <th class="tr-action">${modalMessage.ACTIONS}</th>
             <tr>
           </thead>
           <tbody>
@@ -68,12 +69,12 @@ const ProductListScreen = {
             <tr>
               <td>${product._id}</td>
               <td>${product.name}</td>
-              <td>${product.price} €</td>
+              <td>${product.price} ${modalMessage.CURRENCY}</td>
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>
-              <button id="${product._id}" class="edit-product-button"><i class="fa fa-edit success"></i> Edit</button>
-              <button id="${product._id}" class="delete-product-button"><i class="fa fa-trash error"></i> Delete</button>
+              <button id="${product._id}" class="edit-product-button"><i class="fa fa-edit success"></i> ${modalMessage.EDIT}</button>
+              <button id="${product._id}" class="delete-product-button"><i class="fa fa-trash error"></i> ${modalMessage.DELETE}</button>
               </td>
             </tr>
             `

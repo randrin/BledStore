@@ -26,5 +26,22 @@ export const modalMessage = {
     LOGIN: 'Login',
     ACCOUNT_ALREADY: 'Already have an account?',
     FULLNAME: 'Full Name',
-    PLACEHOLDER_FULLNAME: 'Enter your fullname'
+    PLACEHOLDER_FULLNAME: 'Enter your fullname',
+    PRODUCTS: 'Store Products',
+    BACK_DASHBOARD_PRODUCTS: 'Back to Products List',
+    CREATE_PRODUCT: 'Create Product',
+    ID_PRODUCT: 'ID Product',
+    NAME_PRODUCT: 'Name',
+    COUNT_IN_STOCK: 'Count In Stock',
+    CATEGORY: 'Category',
+    BRAND: 'Brand',
+    IMAGE: 'Image',
+    DESCRIPTION: 'Description',
+    PRICE: 'Price',
+    ACTIONS: 'Actions',
+    CREATE: 'Create',
+    UPDATE: 'Update',
+    EDIT: 'Edit',
+    DELETE: 'Delete',
+    CURRENCY: '€'
 }

@@ -1,5 +1,3 @@
-
-
 import { getProducts } from "../../api/store/ApiProducts";
 import Rating from "../../components/Rating";
 import { hideLoading, showLoading } from "../../utils";
@@ -21,12 +19,13 @@ const HomeScreen = {
           .map(
             (product) => `
               <li>
-              <div class="product">
+              <div class="card-product product">
                 <a href="/#/product/${product._id}">
                   <img src="${product.image}" alt="${product.name}" />
                 </a>
+                <div class="card-product-body">
                 <div class="product-name">
-                  <a href="/#/product/${product._id}">${product.name}</a>
+                  <a href="/#/product/${product._id}">${product.name.length > 25 ?  product.name.substring(0, 25) + '...' : product.name}</a>
                 </div>
                 <div class="product-rating">
                   ${Rating.render({
@@ -35,7 +34,10 @@ const HomeScreen = {
                   })}
                 </div>
                 <div class="product-brand">${product.brand}</div>
+                <div class="product-description">${product.description.length > 30 ?  product.description.substring(0, 30) + '...' : product.description}</div>
                 <div class="product-price">${product.price} €</div>
+                </div>
+                <a href="/#/product/${product._id}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
               </div>
             </li>
           `

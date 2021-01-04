@@ -1,0 +1,16 @@
+/* Rating */
+.rating {
+    color: #ffc000;
+    font-size: 1.8rem;
+}
+
+.rating span:last-child {
+    color: #444444;
+    font-size: 1.4rem;
+}
+.rating-empty {
+    font-size: 1.8rem;
+}
+.rating-empty span {
+    padding-right: 5px;
+}
