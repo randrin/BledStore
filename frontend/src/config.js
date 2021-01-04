@@ -43,5 +43,12 @@ export const modalMessage = {
     UPDATE: 'Update',
     EDIT: 'Edit',
     DELETE: 'Delete',
-    CURRENCY: '€'
+    CURRENCY: '€',
+    ID_ORDER: 'ID Product',
+    DATE: 'Date',
+    TOTAl: 'Total',
+    USER: 'User',
+    PAID_AT: 'PAID AT',
+    DELIVERED_AT: 'Delivered At',
+    NO: 'No'
 }

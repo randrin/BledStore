@@ -1,8 +1,14 @@
 import DashboardMenu from "../../../components/DashboardMenu";
 import { deleteProduct } from "../../../api";
-import { hideLoading, rerender, showLoading, showMessage } from "../../../utils";
+import {
+  hideLoading,
+  rerender,
+  showLoading,
+  showMessage,
+} from "../../../utils";
 import { getDashboardOrders } from "../../../api/dashboard/ApiOrders";
-import moment from 'moment';
+import moment from "moment";
+import { modalMessage } from "../../../config";
 
 const OrderListScreen = {
   after_render: async () => {
@@ -12,13 +18,15 @@ const OrderListScreen = {
         document.location.hash = `/order/${editButton.id}/edit`;
       });
     });
-    const deleteButtons = document.getElementsByClassName("delete-order-button");
+    const deleteButtons = document.getElementsByClassName(
+      "delete-order-button"
+    );
     Array.from(deleteButtons).forEach((deleteButton) => {
       deleteButton.addEventListener("click", async () => {
-        if(confirm('Are you sure to delete this order?')) {
+        if (confirm("Are you sure to delete this order?")) {
           showLoading();
           const data = await deleteProduct(deleteButton.id);
-          if(data.error) {
+          if (data.error) {
             showMessage(data.error);
           } else {
             rerender(OrderListScreen);
@@ -46,13 +54,13 @@ const OrderListScreen = {
         <table>
           <thead>
             <tr>
-            <th>ID ORDER</th>
-            <th>DATE (dd/MM/yyyy)</th>
-            <th>TOTAL</th>
-            <th>USER</th>
-            <th>PAID AT</th>
-            <th>DELIVERED AT</th>
-            <th class="tr-action">ACTIONS</th>
+            <th>${modalMessage.ID_ORDER}</th>
+            <th>${modalMessage.DATE}</th>
+            <th>${modalMessage.TOTAl}</th>
+            <th>${modalMessage.USER}</th>
+            <th>${modalMessage.PAID_AT}</th>
+            <th>${modalMessage.DELIVERED_AT}</th>
+            <th class="tr-action">${modalMessage.ACTIONS}</th>
             <tr>
           </thead>
           <tbody>
@@ -61,22 +69,38 @@ const OrderListScreen = {
                 (order) => `
             <tr>
               <td>${order._id}</td>
-              <td>${moment(order.createdAt).format('DD/MM/YYYY')}</td>
+              <td>${moment(order.createdAt).format("DD/MM/YYYY")}</td>
               <td>${order.totalPrice} €</td>
-              <td>${order.user.name} <br/><span class="order-user-email">${order.user.email}</span></td>
+              <td>${order.user.name} <br/><span class="order-user-email">${
+                  order.user.email
+                }</span></td>
               <td>${
                 order.paidAt
-                  ? `<span class="success font-bold">${moment(order.paidAt).format('DD/MM/YYYY HH:mm:ss')}</span>`
-                  : `<span class="error font-bold">No</span>`}
+                  ? `<span class="success font-bold">${moment(
+                      order.paidAt
+                    ).format("DD/MM/YYYY HH:mm:ss")}</span>`
+                  : `<span class="error font-bold">${modalMessage.NO}</span>`
+              }
               </td>
               <td>${
                 order.deliveredAt
-                  ? `<span class="success font-bold">${moment(order.deliveredAt).format('DD/MM/YYYY HH:mm:ss')}</span>`
-                  : `<span class="error font-bold">No</span>`}
+                  ? `<span class="success font-bold">${moment(
+                      order.deliveredAt
+                    ).format("DD/MM/YYYY HH:mm:ss")}</span>`
+                  : `<span class="error font-bold">${modalMessage.NO}</span>`
+              }
               </td>
               <td>
-                <button id="${order._id}" class="edit-order-button"><i class="fa fa-edit success"></i> Edit</button>
-                <button id="${order._id}" class="delete-order-button"><i class="fa fa-trash error"></i> Delete</button>
+                <button id="${
+                  order._id
+                }" class="edit-order-button"><i class="fa fa-edit success"></i> ${
+                  modalMessage.EDIT
+                }</button>
+                <button id="${
+                  order._id
+                }" class="delete-order-button"><i class="fa fa-trash error"></i> ${
+                  modalMessage.DELETE
+                }</button>
               </td>
             </tr>
             `
