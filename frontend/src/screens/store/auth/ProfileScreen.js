@@ -78,7 +78,7 @@ const ProfileScreen = {
           }" required disabled />
         </li>
         <li>
-          <button type="submit" class="primary"><i class="fa fa-user-circle-o"></i> ${
+          <button type="submit" class="primary disable-button"><i class="fa fa-user-circle-o"></i> ${
             modalMessage.UPDATE_PROFILE
           }</button>
         </li>      

@@ -24,7 +24,6 @@ const RegisterScreen = {
             break;
           }
         }
-        console.log(selectedSex);
         if (
           document.getElementById("password").value !==
           document.getElementById("confirm-password").value

@@ -8,6 +8,7 @@ export const endPoint = {
 };
 
 export const modalMessage = {
+  APP_NAME: 'Bled Store',
   PASSWORD_AMD_CONFIRM:
     "Password and Confirmation Password are differents. Try again.",
   ORDER_NOT_FOUND: "Orders not found.",

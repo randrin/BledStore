@@ -17,6 +17,7 @@ import SigninScreen from "./screens/store/auth/SigninScreen.js";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 import OrderListScreen from "./screens/dashboard/orders/OrderListScreen.js";
 import OrderEditScreen from "./screens/dashboard/orders/OrderEditScreen.js";
+import Footer from "./components/Footer.js";
 
 const routes = {
   "/": HomeScreen,
@@ -52,6 +53,9 @@ const router = async () => {
   const main = document.getElementById("bled-store");
   main.innerHTML = await screen.render();
   if (screen.after_render) await screen.after_render();
+  const footer = document.getElementById("bled-store-footer");
+  footer.innerHTML = await Footer.render();
+  await Footer.after_render();
   setTimeout(() => {
     hideLoading();
   }, 1000);
