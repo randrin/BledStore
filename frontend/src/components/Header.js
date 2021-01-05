@@ -3,7 +3,7 @@ import { getCartItems, getUserInfos } from "../localStorage";
 const Header = {
   after_render: () => {},
   render: () => {
-    const { name, isAdmin } = getUserInfos();
+    const { pseudo, isAdmin } = getUserInfos();
     const cartItems = getCartItems();
     return `
         <div class="brand">
@@ -11,12 +11,12 @@ const Header = {
         </div>
         <div class="menu-brand">
         ${
-          name
-            ? `<a href="/#/profile"><i class="fa fa-user-circle-o"></i> ${name}</a>`
+          pseudo
+            ? `<a href="/#/profile"><i class="fa fa-user-circle-o"></i> ${pseudo}</a>`
             : `<a href="/#/signin"><i class="fa fa-user-circle"></i> Sign In</a>`
         }
             <a href="/#/cart"><i class="fa fa-shopping-cart"></i> <span class="cart-items">${cartItems.length}</span></a>
-            ${isAdmin ? `<a href="/#/dashboard">Dashboard</a>` : ""}
+            ${isAdmin ? `<a href="/#/dashboard"><i class="fa fa-dashboard"></i></a>` : ""}
         </div>
         `;
   },

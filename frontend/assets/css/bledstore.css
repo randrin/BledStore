@@ -91,6 +91,7 @@ button {
 
 button {
     cursor: pointer;
+    font-weight: 600;
 }
 
 .disable-button {
@@ -105,6 +106,12 @@ button:hover {
 
 button.primary {
     background-color: #f0c040;
+    font-weight: 600;
+}
+
+button.primary:hover {
+    color: #f0c040;
+    background-color: #404040;
     font-weight: 600;
 }
 
@@ -203,6 +210,10 @@ header a {
     text-decoration: none;
 }
 
+.display-none {
+    display: none !important;
+}
+
 .brand a {
     font-size: 3rem;
 }
@@ -270,6 +281,11 @@ footer {
 
 .form-account {
     text-align: center;
+}
+
+.gender label:last-child {
+    left: 25px;
+    position: relative;
 }
 
 /*  Checkout Steps */

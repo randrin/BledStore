@@ -45,8 +45,12 @@ userRouter.post(
     } else {
       res.send({
         _id: signinUser._id,
+        pseudo: signinUser.pseudo,
+        sex: signinUser.sex,
         name: signinUser.name,
+        phone: signinUser.phone,
         email: signinUser.email,
+        password: signinUser.password,
         isAdmin: signinUser.isAdmin,
         token: generateToken(signinUser),
       });
@@ -59,7 +63,10 @@ userRouter.post(
   expressAyncHandler(async (req, res) => {
     const dataUser = new User({
       name: req.body.name,
+      phone: req.body.phone,
+      sex: req.body.sex,
       email: req.body.email,
+      pseudo: req.body.pseudo,
       password: await bcrypt.hash(req.body.password, 16),
     });
     const user = await dataUser.save();
@@ -68,8 +75,11 @@ userRouter.post(
     } else {
       res.send({
         _id: user._id,
+        pseudo: user.pseudo,
+        sex: user.sex,
         name: user.name,
         email: user.email,
+        phone: user.phone,
         isAdmin: user.isAdmin,
         token: generateToken(user),
       });

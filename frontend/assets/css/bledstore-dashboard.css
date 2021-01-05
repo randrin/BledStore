@@ -1,0 +1,9 @@
+.user-profile {
+    align-items: center;
+    padding-bottom: 2rem;
+}
+
+.user-profile-img {
+    border: 2px solid #203040;
+    border-radius: 50%;
+}

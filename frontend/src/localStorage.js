@@ -14,19 +14,40 @@ export const setUserInfos = ({
   email = "",
   password = "",
   name = "",
+  sex = "",
+  phone = "",
+  pseudo = "",
   isAdmin = "",
   token = false,
 }) => {
   localStorage.setItem(
     "userInfos",
-    JSON.stringify({ _id, email, password, name, isAdmin, token })
+    JSON.stringify({
+      _id,
+      pseudo,
+      phone,
+      sex,
+      email,
+      password,
+      name,
+      isAdmin,
+      token,
+    })
   );
 };
 
 export const getUserInfos = () => {
   return localStorage.getItem("userInfos")
     ? JSON.parse(localStorage.getItem("userInfos"))
-    : { name: "", password: "", email: "" , isAdmin: false};
+    : {
+        name: "",
+        password: "",
+        email: "",
+        pseudo: "",
+        phone: "",
+        sex: "",
+        isAdmin: false,
+      };
 };
 
 export const clearUserInfos = () => {
@@ -66,5 +87,5 @@ export const setPaymentInfos = ({ paymentMethod = "paypal" }) => {
 };
 
 export const cleanCart = () => {
-    localStorage.removeItem('cartItems')
-}
+  localStorage.removeItem("cartItems");
+};

@@ -87,8 +87,8 @@ export const deleteProduct = async (productId) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
     if (response.statusText !== "OK") {
       throw new Error(response.data.message);
@@ -122,8 +122,6 @@ export const uploadProductImage = async (formData) => {
     return { error: error.response.data.message || error.message };
   }
 };
-
-
 
 export const productCreate = async ({
   name,
@@ -184,7 +182,14 @@ export const signin = async ({ email, password }) => {
   }
 };
 
-export const register = async ({ email, name, password }) => {
+export const register = async ({
+  email,
+  name,
+  password,
+  sex,
+  phone,
+  pseudo,
+}) => {
   try {
     const response = await axios({
       url: `${apiUrl}/api/users/register`,
@@ -196,6 +201,9 @@ export const register = async ({ email, name, password }) => {
         email,
         password,
         name,
+        sex,
+        phone,
+        pseudo,
       },
     });
     if (response.statusText !== "OK") {

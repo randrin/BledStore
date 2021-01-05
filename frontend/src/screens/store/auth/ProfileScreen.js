@@ -1,5 +1,9 @@
 import { getMineOrders, update } from "../../../api";
-import { setUserInfos, getUserInfos, clearUserInfos } from "../../../localStorage";
+import {
+  setUserInfos,
+  getUserInfos,
+  clearUserInfos,
+} from "../../../localStorage";
 import { hideLoading, showLoading, showMessage } from "../../../utils";
 import moment from "moment";
 import { modalMessage } from "../../../config";
@@ -30,7 +34,7 @@ const ProfileScreen = {
       });
   },
   render: async () => {
-    const { email, name } = getUserInfos();
+    const { email, name, pseudo, createdAt, password } = getUserInfos();
     if (!name) {
       document.location.hash = "/";
     }
@@ -42,28 +46,48 @@ const ProfileScreen = {
     <div class="form-container">
     <form id="profile-form">
       <ul class="form-items">
-        <li>
-          <h1>User Profile</h1>
+        <li class="user-profile">
+          <img src="./assets/images/default-avatar.png" alt="${name}" class="user-profile-img" />
+          <h1>${pseudo}</h1>
+          <span>${modalMessage.MEMBER_SINCE} ${moment(createdAt).format(
+      modalMessage.FORMAT_DATE
+    )}</span>
         </li>
         <li>
-          <label for="name">Name</label>
-          <input type="name" name="name" id="name" value="${name}" />
+          <label for="name">${
+            modalMessage.FULLNAME
+          } <span class="form-required">*</span></label>
+          <input type="name" name="name" id="name" value="${name}"  placeholder="${
+      modalMessage.PLACEHOLDER_FULLNAME
+    }" required disabled />
         </li>
         <li>
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" value="${email}" />
+          <label for="email">${
+            modalMessage.EMAIL
+          } <span class="form-required">*</span></label>
+          <input type="email" name="email" id="email" value="${email}"  placeholder="${
+      modalMessage.PLACEHOLDER_EMAIL
+    }" required disabled />
         </li>
         <li>
-          <label for="password">Password</label>
-          <input type="password" name="password" id="password" />
+          <label for="password">${
+            modalMessage.PASSWORD
+          } <span class="form-required">*</span></label>
+          <input type="password" name="password" id="password" value="${password.substring(0,16)}" placeholder="${
+            modalMessage.PLACEHOLDER_PASSWORD
+          }" required disabled />
         </li>
         <li>
-          <button type="submit" class="primary">Update</button>
+          <button type="submit" class="primary"><i class="fa fa-user-circle-o"></i> ${
+            modalMessage.UPDATE_PROFILE
+          }</button>
         </li>      
       </ul>
       <ul class="form-items">
         <li>
-          <button type="button" id="logout-profile">Sign Out <i class="fa fa-power-off"></i></button>
+          <button type="button" id="logout-profile">${
+            modalMessage.SIGN_OUT
+          } <i class="fa fa-power-off"></i></button>
         </li>
       </ul>
     </form>
@@ -71,17 +95,17 @@ const ProfileScreen = {
   </div>
     </div>
     <div class="profile-orders">
-    <h2>Orders History</h2>
+    <h2>${modalMessage.ORDERS_HISTORY}</h2>
     <hr/>
       <table>
         <thead>
           <tr>
-            <th>ORDER ID</th>
-            <th>DATE (dd/MM/yyyy HH:mm:ss)</th>
-            <th>TOTAL</th>
-            <th>PAID</th>
-            <th>DELIVERED</th>
-            <th>ACTIONS</th>
+            <th>${modalMessage.ID_ORDER}</th>
+            <th>${modalMessage.DATE}</th>
+            <th>${modalMessage.TOTAl}</th>
+            <th>${modalMessage.PAID_AT}</th>
+            <th>${modalMessage.DELIVERED_AT}</th>
+            <th>${modalMessage.ACTIONS}</th>
           </tr>
         </thead>
         <tbody>
@@ -101,23 +125,27 @@ const ProfileScreen = {
                     (order) => `
         <tr>
           <td>${order._id}</td>
-          <td>${moment(order.createdAt).format("DD/MM/YYYY HH:mm:ss")}</td>
-          <td>${order.totalPrice} €</td>
+          <td>${moment(order.createdAt).format(
+            modalMessage.FORMAT_FULL_DATE
+          )}</td>
+          <td>${order.totalPrice} ${modalMessage.CURRENCY}</td>
           <td>${
             order.paidAt
               ? `<span class="success font-bold">${moment(order.paidAt).format(
-                  "DD/MM/YYYY HH:mm:ss"
+                  modalMessage.FORMAT_FULL_DATE
                 )}</span>`
-              : `<span class="error font-bold">No</span>`
+              : `<span class="error font-bold">${modalMessage.NO}</span>`
           }</td>
           <td>${
             order.deliveryAt
               ? `<span class="success font-bold">${moment(
                   order.deliveryAt
-                ).format("DD/MM/YYYY HH:mm:ss")}</span>`
-              : `<span class="error font-bold">No</span>`
+                ).format(modalMessage.FORMAT_FULL_DATE)}</span>`
+              : `<span class="error font-bold">${modalMessage.NO}</span>`
           }</td>
-          <td><a href="/#/order/${order._id}">DETIALS</a> </td>
+          <td><a href="/#/order/${order._id}">${
+                      modalMessage.PAID
+                    } <i class="fa fa-angle-right"></a> </td>
         </tr>
         `
                   )

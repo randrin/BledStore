@@ -69,7 +69,7 @@ const ProductCreateScreen = {
                         </li>
                         <li>
                             <label for="image">${modalMessage.IMAGE} <span class="form-required">*</span></label>
-                            <input type="text" name="image" id="image" placeholder="Select the product image" required />
+                            <input type="text" name="image" id="image" class="display-none" placeholder="Select the product image" required />
                             <input type="file" name="image-file" id="image-file" />
                         </li>
                         <li>

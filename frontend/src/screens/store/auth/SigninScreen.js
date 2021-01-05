@@ -64,11 +64,11 @@ const SigninScreen = {
                     </li>
                     <li>
                         <label for="email">${modalMessage.EMAIL} <span class="form-required">*</span></label>
-                        <input id="email" name="email" type="text" placeholder=${modalMessage.PLACEHOLDER_EMAIL} required/>
+                        <input id="email" name="email" type="text" placeholder="${modalMessage.PLACEHOLDER_EMAIL}" required />
                     </li>
                     <li>
                         <label for="password">${modalMessage.PASSWORD} <span class="form-required">*</span></label>
-                        <input id="password" name="password" type="password" class="password_input" placeholder=${modalMessage.PLACEHOLDER_PASSWORD} required />
+                        <input id="password" name="password" type="password" class="password_input" placeholder="${modalMessage.PLACEHOLDER_PASSWORD}" required />
                         <span class="preview_icon">
                           <i class="show-hide-password fa"></i>
                         </span>

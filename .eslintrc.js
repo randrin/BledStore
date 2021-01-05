@@ -25,6 +25,7 @@ module.exports = {
       'no-alert': 0,
       'no-restricted-globals': 0,
       'no-new': 0,
-      'prefer-template': 0
+      'prefer-template': 0,
+      'no-plusplus': 0
     },
   };
