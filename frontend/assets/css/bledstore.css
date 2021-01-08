@@ -137,12 +137,12 @@ button.primary:hover {
 }
 
 .overlay.active .loading-icon {
-    background-image: url('../assets/images/loading.gif');
+    background-image: url('../images/loading.gif');
     background-repeat: no-repeat;
     display: flex;
     z-index: 1000;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
     justify-content: center;
     align-items: center;
 }

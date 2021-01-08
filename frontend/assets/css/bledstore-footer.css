@@ -2,19 +2,93 @@ footer {
     height: max-content;
 }
 
+.bledstore-footer-scrollToTopBtn {
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    z-index: 100;
+    display: none;
+    color: #ffffff;
+}
+
+.bledstore-footer-scrollToTopBtn i {
+    color: #203040;
+    top: -3px;
+    position: relative;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.bledstore-footer-scrollToTopBtn:hover {
+    background-color: #f08040;
+}
+
+.bledstore-footer-scrollToTopBtn:hover i {
+    top: -7px;
+    transition: all .35s ease;
+}
+
+.bledstore-footer-scrollToTopBtn:hover i {
+    color: #ffffff;
+}
+
 .bledstore-footer-wrapper {
     padding: 0px 100px;
 }
 
-.bledstore-footer-box-one,
-.bledstore-footer-box-two {
+.bledstore-footer-box {
     display: flex;
     flex-wrap: wrap;
 }
 
 .bledstore-footer-contact,
-.bledstore-footer-store {
+.bledstore-footer-store,
+.bledstore-footer-box-quarter {
     flex: 0 0 25%;
+}
+
+.bledstore-footer-box-quarter h2 {
+    color: #f08040;
+}
+
+.bledstore-footer-box-quarter a {
+    color: #ffffff;
+}
+
+.bledstore-footer-box-quarter a:hover {
+    color: #f08040;
+    transform-origin: left center;
+    transform: scale(1, 1);
+}
+
+.box-quarter {
+    display: inline-grid;
+}
+
+.box-quarter a {
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.box-quarter a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    width: 100%;
+    height: .1rem;
+    transform-origin: right center;
+    transform: scale(0, 1);
+    transition: transform .3s ease;
+}
+
+.box-quarter a:hover::before {
+    transform-origin: left center;
+    transform: scale(1, 1);
+    background-color: #f08040;
 }
 
 .bledstore-footer-store p {
@@ -166,8 +240,7 @@ footer {
         justify-content: center;
     }
 
-
-    .bledstore-footer-box-one {
+    .bledstore-footer-box {
         display: inherit;
     }
 
