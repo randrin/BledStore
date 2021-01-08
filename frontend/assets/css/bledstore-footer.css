@@ -7,7 +7,7 @@ footer {
     height: 45px;
     position: fixed;
     bottom: 50px;
-    right: 50px;
+    right: 25px;
     z-index: 100;
     display: none;
     color: #ffffff;
@@ -256,5 +256,9 @@ footer {
     .bledstore-footer-copyright,
     .bledstore-footer-payment {
         flex: 0 0 100%;
+    }
+
+    .bledstore-footer-scrollToTopBtn {
+        right: 10px;
     }
 }

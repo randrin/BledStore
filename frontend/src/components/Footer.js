@@ -1,6 +1,8 @@
 const Footer = {
   after_render: () => {
-    var scrollToTopBtn = document.querySelector(".bledstore-footer-scrollToTopBtn");
+    var scrollToTopBtn = document.querySelector(
+      ".bledstore-footer-scrollToTopBtn"
+    );
     var rootElement = document.documentElement;
 
     function handleScroll() {

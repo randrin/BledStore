@@ -58,6 +58,10 @@ const router = async () => {
   await Footer.after_render();
   setTimeout(() => {
     hideLoading();
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, 1000);
 };
 
