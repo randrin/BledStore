@@ -1,6 +1,0 @@
-const Rating = {
-    render: (props) => 
-    {
-
-    }
-}

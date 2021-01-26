@@ -1,4 +1,0 @@
-
-
-const productRouter = express.Router();
-

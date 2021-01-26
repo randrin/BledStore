@@ -1,5 +1,0 @@
-const DashboardScreen = {
-
-}
-
-export default 

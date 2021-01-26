@@ -52,6 +52,7 @@ userRouter.post(
         email: signinUser.email,
         password: signinUser.password,
         isAdmin: signinUser.isAdmin,
+        createdAt: signinUser.createdAt,
         token: generateToken(signinUser),
       });
     }

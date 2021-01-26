@@ -1,7 +1,0 @@
-const HomeScreen = {
-    render: () => {
-        return 
-        <>
-        </>
-    }
-}

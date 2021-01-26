@@ -1,3 +1,0 @@
-
-
-const productRouter = express.Router();
