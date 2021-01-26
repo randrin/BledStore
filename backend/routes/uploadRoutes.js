@@ -21,11 +21,11 @@ const uploadAWS = multer({
     metadata:  (req, file, cb) => {
       cb(null, { fieldName: file.fieldname });
     },
-    destination:  (req, file, cb) => {
-      cb(null, "products/");
+    location:  (req, file, cb) => {
+      cb(null, "/products");
     },
     key: (req, file, cb) => {
-      cb(null, Date.now().toString());
+      cb(null, `products/${Date.now().toString()}`);
     },
   }),
 });
