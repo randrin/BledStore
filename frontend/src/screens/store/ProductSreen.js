@@ -1,4 +1,4 @@
-import { getProduct } from "../../api";
+import { getProduct } from "../../api/store/ApiProducts";
 import Rating from "../../components/Rating";
 import { hideLoading, parseRequestUrl } from "../../utils";
 
@@ -19,7 +19,7 @@ const ProductScreen = {
 
     return `<div class="content">
         <div class="back-to-result">
-          <a href='/#/'>Back to Home</a>
+          <a href='/#/'><i class="fa fa-angle-left"></i> Back to Home</a>
         </div>
         <div class="details">
           <div class="details-image">
@@ -66,8 +66,8 @@ const ProductScreen = {
               <li>
               ${
                 product.countInStock > 0
-                  ? `<button id="add-button" class="fw primary">Add to Cart </button>`
-                  : `<button id="add-button" class="fw primary disable-button">Add to Cart </button>`
+                  ? `<button id="add-button" class="fw primary"><i class="fa fa-shopping-cart"></i> Add to Cart </button>`
+                  : `<button id="add-button" class="fw primary disable-button"><i class="fa fa-shopping-cart"></i> Add to Cart </button>`
               }
               </li>
             </ul>

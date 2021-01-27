@@ -18,6 +18,8 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils.js";
 import OrderListScreen from "./screens/dashboard/orders/OrderListScreen.js";
 import OrderEditScreen from "./screens/dashboard/orders/OrderEditScreen.js";
 import Footer from "./components/Footer.js";
+import BrandListScreen from "./screens/dashboard/brands/BrandListScreen.js";
+import CategoryListScreen from "./screens/dashboard/categories/CategoryListScreen.js";
 
 const routes = {
   "/": HomeScreen,
@@ -37,6 +39,8 @@ const routes = {
   "/dashboard-products": ProductListScreen,
   "/dashboard-create-product": ProductCreateScreen,
   "/dashboard-orders": OrderListScreen,
+  "/dashboard-brands": BrandListScreen,
+  "/dashboard-categories": CategoryListScreen,
 };
 
 const router = async () => {

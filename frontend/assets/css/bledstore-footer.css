@@ -1,5 +1,7 @@
 footer {
+    top: 25px;
     height: max-content;
+    position: relative;
 }
 
 .bledstore-footer-scrollToTopBtn {

@@ -1,0 +1,24 @@
+/* Media Queries */
+@media only screen and (max-width: 47.9375em) {
+    .menu-brand a {
+        font-size: 1.6rem;
+    }
+
+    .brand a {
+        font-size: 2.5rem;
+    }
+
+    form {
+        top: 0;
+        position: relative;
+        margin: 0px 10px;
+    }
+
+    .details-info {
+        margin: 0px;
+    }
+
+    .cart-action {
+        margin: auto;
+    }
+}

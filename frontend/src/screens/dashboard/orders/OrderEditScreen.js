@@ -1,5 +1,5 @@
 import moment from "moment";
-import { getOrder } from "../../../api";
+import { getOrder } from "../../../api/store/ApiOrders";
 import { getUserInfos } from "../../../localStorage";
 import { deliverOrder } from "../../../api/dashboard/ApiOrders";
 import {

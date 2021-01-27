@@ -1,4 +1,4 @@
-import { createOrder } from "../../api";
+import { createOrder } from "../../api/store/ApiOrders";
 import Checkout from "../../components/Checkout";
 import {
   cleanCart,
@@ -125,7 +125,7 @@ const PlaceOrderScreen = {
                 <li class="total"><div>Order Total</div><div>$${totalPrice}</div></li> 
                 <li>
                     <button id="placeorder-button" class="primary fw">
-                    Place Order
+                    <i class="fa fa-money"></i> Place Order
                     </button>
                 </li>
             </ul>

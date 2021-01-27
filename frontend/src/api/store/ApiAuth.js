@@ -2,15 +2,17 @@ import axios from "axios";
 import { apiUrl } from "../../config";
 import { getUserInfos } from "../../localStorage";
 
-export const getDashboardOrders = async () => {
+export const signin = async ({ email, password }) => {
   try {
-    const { token } = getUserInfos();
     const response = await axios({
-      url: `${apiUrl}/api/orders/dashboard`,
-      method: "GET",
+      url: `${apiUrl}/api/users/signin`,
+      method: "POST",
       headers: {
-        Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
+      },
+      data: {
+        email,
+        password,
       },
     });
     if (response.statusText !== "OK") {
@@ -22,37 +24,53 @@ export const getDashboardOrders = async () => {
   }
 };
 
-export const deliverOrder = async (orderId) => {
+export const register = async ({
+  email,
+  name,
+  password,
+  sex,
+  phone,
+  pseudo,
+}) => {
   try {
-    const { token } = getUserInfos();
     const response = await axios({
-      url: `${apiUrl}/api/orders/${orderId}/deliver`,
+      url: `${apiUrl}/api/users/register`,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        email,
+        password,
+        name,
+        sex,
+        phone,
+        pseudo,
+      },
+    });
+    if (response.statusText !== "OK") {
+      throw new Error(response.data.message);
+    }
+    return response.data;
+  } catch (error) {
+    return { error: error.response.data.message || error.message };
+  }
+};
+
+export const updateProfile = async ({ email, name, password }) => {
+  try {
+    const { _id, token } = getUserInfos();
+    const response = await axios({
+      url: `${apiUrl}/api/users/${_id}`,
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-    });
-    if (response.statusText !== "OK") {
-      throw new Error(response.data.message);
-    }
-    return response.data;
-  } catch (error) {
-    return {
-      error: error.response ? error.response.data.message : error.message,
-    };
-  }
-};
-
-export const getMineOrders = async () => {
-  try {
-    const { token } = getUserInfos();
-    const response = await axios({
-      url: `${apiUrl}/api/orders/mineOrders`,
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
+      data: {
+        email,
+        password,
+        name,
       },
     });
     if (response.statusText !== "OK") {
@@ -60,8 +78,6 @@ export const getMineOrders = async () => {
     }
     return response.data;
   } catch (error) {
-    return {
-      error: error.response ? error.response.data.message : error.message,
-    };
+    return { error: error.response.data.message || error.message };
   }
 };

@@ -97,17 +97,21 @@
 }
 
 .details-image {
-    flex: 1 1 60rem;
+    flex: 1 1 50rem;
 }
 
 .details-image img {
-    max-width: 60rem;
+    max-width: 65rem;
     width: 100%;
 }
 
 .details-info,
 .details-action {
     flex: 1 1 30rem;
+}
+
+.details-info {
+    margin: 0px 20px 0px 0px;
 }
 
 .details-info ul,
@@ -131,4 +135,8 @@
     border-radius: 0.5rem;
     background-color: #f8f8f8;
     padding: 1rem;
+}
+
+.back-to-result {
+    margin: 25px 0px;
 }

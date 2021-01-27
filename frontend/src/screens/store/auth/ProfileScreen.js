@@ -1,4 +1,5 @@
-import { getMineOrders, update } from "../../../api";
+import { getMineOrders } from "../../../api/dashboard/ApiOrders";
+import { updateProfile } from "../../../api/store/ApiAuth";
 import {
   setUserInfos,
   getUserInfos,
@@ -19,7 +20,7 @@ const ProfileScreen = {
       .addEventListener("submit", async (e) => {
         e.preventDefault();
         showLoading();
-        const data = await update({
+        const data = await updateProfile({
           email: document.getElementById("email").value,
           password: document.getElementById("password").value,
           name: document.getElementById("name").value,

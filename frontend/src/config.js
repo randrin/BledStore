@@ -54,6 +54,8 @@ export const modalMessage = {
   CREATE: "Create",
   UPDATE: "Update",
   UPDATE_PROFILE: "Update Profile",
+  ACTIVE: "Activated",
+  DISACTIVE: "Disabled",
   EDIT: "Edit",
   DELETE: "Delete",
   CURRENCY: "€",
@@ -68,5 +70,9 @@ export const modalMessage = {
   FORMAT_FULL_DATE: "DD/MM/YYYY HH:mm:ss",
   FORMAT_DATE: "DD/MM/YYYY",
   PAID: "Paid",
-  MEMBER_SINCE: 'Member since'
+  MEMBER_SINCE: 'Member since',
+  BRANDS: "Store Brands",
+  CREATE_BRAND: "Create Brand",
+  CATEGORIES: "Store Categories",
+  CREATE_CATEGORY: "Create Category",
 };

@@ -1,4 +1,4 @@
-import { register } from "../../../api";
+import { register } from "../../../api/store/ApiAuth";
 import { setUserInfos, getUserInfos } from "../../../localStorage";
 import {
   hideLoading,

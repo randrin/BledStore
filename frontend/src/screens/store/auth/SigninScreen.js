@@ -1,4 +1,4 @@
-import { signin } from "../../../api";
+import { signin } from "../../../api/store/ApiAuth";
 import { setUserInfos, getUserInfos } from "../../../localStorage";
 import {
   hideLoading,

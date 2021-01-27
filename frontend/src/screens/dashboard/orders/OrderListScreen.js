@@ -1,5 +1,5 @@
 import DashboardMenu from "../../../components/DashboardMenu";
-import { deleteProduct } from "../../../api";
+import { deleteProduct } from "../../../api/dashboard/ApiProducts";
 import {
   hideLoading,
   rerender,

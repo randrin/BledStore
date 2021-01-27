@@ -1,4 +1,4 @@
-import { getProduct } from "../../api";
+import { getProduct } from "../../api/store/ApiProducts";
 import { getCartItems, setCartItems } from "../../localStorage";
 import { parseRequestUrl, rerender } from "../../utils";
 
@@ -115,9 +115,15 @@ const CartScreen = {
         :
         $${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
       </h3>
-      <button id="checkout-button" class="primary fw">
-        Proceed to Checkout
-      </button>
+      ${
+        cartItems.length === 0
+          ? `<button id="checkout-button" class="primary fw disable-button">
+        <i class="fa fa-check-circle-o"></i> Proceed to Checkout
+      </button>`
+          : `<button id="checkout-button" class="primary fw">
+        <i class="fa fa-check-circle-o"></i> Proceed to Checkout
+      </button>`
+      }
   </div>
       </div>`;
   },

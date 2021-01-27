@@ -201,7 +201,7 @@ header {
 
 main {
     position: relative;
-    /* top: 50px; */
+    top: 25px; 
 }
 
 header a {
@@ -293,7 +293,7 @@ footer {
     display: flex;
     justify-content: space-between;
     width: 40rem;
-    margin: 1rem auto;
+    margin: 3rem auto 1rem;
 }
 
 .checkout-steps>div {
@@ -306,6 +306,13 @@ footer {
 .checkout-steps>div.active {
     color: #f08000;
     border-top-color: #f08000;
+}
+
+#checkout-button i,
+#placeorder-button i {
+    font-size: 22px;
+    top: 3px;
+    position: relative;
 }
 
 /* Orders Placement */
@@ -560,20 +567,4 @@ td {
 /* Modal Messages */
 #message-overlay-content {
     text-align: center;
-}
-
-/* Media Queries */
-@media only screen and (max-width: 47.9375em) {
-    .menu-brand a {
-        font-size: 1.6rem;
-    }
-
-    .brand a {
-        font-size: 2.5rem;
-    }
-
-    form {
-        top: 0;
-        position: relative;
-    }
 }

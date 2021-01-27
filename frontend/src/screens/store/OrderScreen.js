@@ -5,7 +5,7 @@ import {
   showLoading,
   showMessage,
 } from "../../utils";
-import { getOrder, getPaypalClientId, payOrder } from "../../api";
+import { getOrder, getPaypalClientId, payOrder } from "../../api/store/ApiOrders";
 import moment from 'moment';
 
 const addPaypalSdk = async (totalPrice) => {

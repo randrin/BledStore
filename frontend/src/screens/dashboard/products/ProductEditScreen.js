@@ -1,7 +1,8 @@
 import { hideLoading, parseRequestUrl, showLoading, showMessage } from "../../../utils";
-import { getProduct, productUpdate, uploadProductImage } from "../../../api";
+import { productUpdate, uploadProductImage } from "../../../api/dashboard/ApiProducts";
 import DashboardMenu from "../../../components/DashboardMenu";
 import { modalMessage } from "../../../config";
+import { getProduct } from "../../../api/store/ApiProducts";
 
 const ProductEditScreen = {
   after_render: async () => {

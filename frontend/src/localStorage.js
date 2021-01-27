@@ -18,6 +18,7 @@ export const setUserInfos = ({
   phone = "",
   pseudo = "",
   isAdmin = "",
+  createdAt = "",
   token = false,
 }) => {
   localStorage.setItem(
@@ -31,6 +32,7 @@ export const setUserInfos = ({
       password,
       name,
       isAdmin,
+      createdAt,
       token,
     })
   );

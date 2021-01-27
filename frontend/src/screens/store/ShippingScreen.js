@@ -50,7 +50,7 @@ const ShippingScreen = {
                         <input id="country" name="country" type="text" value="${country}" placeholder="Enter your postal country" />
                     </li>
                     <li>
-                        <button type="submit" class="primary">Continue</button>
+                        <button type="submit" class="primary">Continue <i class="fa fa-angle-double-right"></i></button></button>
                     </li>
                 </ul>
             </form>

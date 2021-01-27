@@ -1,7 +1,6 @@
 import DashboardMenu from "../../../components/DashboardMenu";
-import { deleteProduct } from "../../../api";
 import { hideLoading, rerender, showLoading, showMessage } from "../../../utils";
-import { getDashboardProducts } from "../../../api/dashboard/ApiProducts";
+import { getDashboardProducts, activateProduct, deleteProduct } from "../../../api/dashboard/ApiProducts";
 import { modalMessage } from '../../../config';
 
 const ProductListScreen = {
@@ -11,6 +10,21 @@ const ProductListScreen = {
       .addEventListener("click", async () => {
         document.location.hash = "/dashboard-create-product";
       });
+    const activeButtons = document.getElementsByClassName("activate-product-button");
+    Array.from(activeButtons).forEach((activeButton) => {
+      activeButton.addEventListener("click", async () => {
+        if(confirm('Are you sure to activate this product?')) {
+          showLoading();
+          const data = await activateProduct(activeButton.id);
+          if(data.error) {
+            showMessage(data.error);
+          } else {
+            rerender(ProductListScreen);
+          }
+          hideLoading();
+        }
+      });
+    });
     const editButtons = document.getElementsByClassName("edit-product-button");
     Array.from(editButtons).forEach((editButton) => {
       editButton.addEventListener("click", () => {
@@ -46,7 +60,7 @@ const ProductListScreen = {
       <div class="dashboard-box-title">
         <h1>${modalMessage.PRODUCTS}</h1>
         <button id="create-product-button" class="product-create-button primary">
-        ${modalMessage.CREATE_PRODUCT} <i class="fa fa-angle-double-right"></i>
+        <i class="fa fa-gift"></i> ${modalMessage.CREATE_PRODUCT} <i class="fa fa-angle-double-right"></i>
         </button>
       </div>
       <hr/>
@@ -73,6 +87,7 @@ const ProductListScreen = {
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>
+              <button id="${product._id}" class="activate-product-button"><i class="fa fa-power-off success"></i> ${product.active ? modalMessage.ACTIVE : modalMessage.DISACTIVE}</button>
               <button id="${product._id}" class="edit-product-button"><i class="fa fa-edit success"></i> ${modalMessage.EDIT}</button>
               <button id="${product._id}" class="delete-product-button"><i class="fa fa-trash error"></i> ${modalMessage.DELETE}</button>
               </td>

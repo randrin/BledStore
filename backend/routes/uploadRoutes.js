@@ -13,7 +13,16 @@ AWS.config.update({
 
 const s3 = new AWS.S3();
 
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png') {
+    cb(null, true)
+  } else {
+    cb(new Error('Invalid Mine Type, only JPEG and PNG'), false)
+  }
+}
+
 const uploadAWS = multer({
+  fileFilter,
   storage: multerS3({
     s3,
     bucket: config.AWS_BUCKET_NAME,
@@ -34,7 +43,10 @@ uploadRouter.post(
   isAuth,
   isAdmin,
   uploadAWS.single("image"),
-  (req, res) => {
+  (req, res, err) => {
+    if (err) {
+      res.status(422).send({ errors: [{ title: 'File Upload Error', message: err.message }] });
+    }
     res.status(201).send({ image: req.file.location });
   }
 );

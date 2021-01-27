@@ -1,14 +1,14 @@
 import { getDashboardInfos } from "../../api/dashboard/ApiDashboards";
 import DashboardMenu from "../../components/DashboardMenu";
 import { getUserInfos } from "../../localStorage";
-import Chartist from 'chartist';
+import Chartist from "chartist";
 
 let summary = {};
 
 const DashboardScreen = {
   after_render: () => {
     new Chartist.Line(
-      '.ct-chart-line',
+      ".ct-chart-line",
       {
         labels: summary.dailyOrders.map((x) => x._id),
         series: [summary.dailyOrders.map((x) => x.sales)],
@@ -18,7 +18,7 @@ const DashboardScreen = {
       }
     );
     new Chartist.Pie(
-      '.ct-chart-pie',
+      ".ct-chart-pie",
       {
         labels: summary.productCategories.map((x) => x._id),
         series: summary.productCategories.map((x) => x.count),
@@ -50,13 +50,17 @@ const DashboardScreen = {
               <div class="summary-title color1">
                 <span><i class="fa fa-users"></i> Users</span>
               </div>
-              <div class="summary-body">${summary.users[0] ? summary.users[0].numUsers : 0}</div>
+              <div class="summary-body">${
+                summary.users[0] ? summary.users[0].numUsers : 0
+              }</div>
             </li>
             <li>
               <div class="summary-title color2">
                 <span><i class="fa fa-gift"></i> Orders</span>
               </div>
-              <div class="summary-body">${summary.orders[0] ? summary.orders[0].numOrders : 0}</div>
+              <div class="summary-body">${
+                summary.orders[0] ? summary.orders[0].numOrders : 0
+              }</div>
             </li>
             <li>
               <div class="summary-title color3">

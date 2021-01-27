@@ -43,6 +43,29 @@ productRouter.post(
 );
 
 productRouter.put(
+  "/activate/:id",
+  isAuth,
+  isAdmin,
+  expressAsyncHandler(async (req, res) => {
+    const product = await Product.findById(req.params.id);
+    if (product) {
+      product.active = !product.active;
+      const productUpdated = await product.save();
+      if (productUpdated) {
+        res.send({
+          message: "Product Activated successfully.",
+          product: productUpdated,
+        });
+      } else {
+        res.status(500).send({ message: "Error in activating product" });
+      }
+    } else {
+      res.status(404).send({ message: "Product not Found" });
+    }
+  })
+);
+
+productRouter.put(
   "/:id",
   isAuth,
   isAdmin,
@@ -119,7 +142,7 @@ export default productRouter;
 productRouter.get(
   "/",
   expressAsyncHandler(async (req, res) => {
-    const products = await Product.find({});
+    const products = await Product.find({ active: true });
     res.send(products);
   })
 );

@@ -1,4 +1,4 @@
-import { productCreate, uploadProductImage } from "../../../api";
+import { productCreate, uploadProductImage } from "../../../api/dashboard/ApiProducts";
 import DashboardMenu from "../../../components/DashboardMenu";
 import { hideLoading, showLoading, showMessage } from "../../../utils";
 import { modalMessage } from "../../../config";
