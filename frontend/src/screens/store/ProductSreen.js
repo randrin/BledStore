@@ -38,13 +38,13 @@ const ProductScreen = {
                 })}
               </li>
               <li>
-                Price: <strong>${product.price}</strong>
+                <span class="title-product">Price: </span><strong>${product.price} €</strong>
               </li>
               <li>
-                Brand: <span>${product.brand}</span>
+                <span class="title-product">Brand: </span><span>${product.brand}</span>
               </li>
               <li>
-                Description: <div class="product-description">${
+                <span class="title-product">Description: </span><div class="product-description">${
                   product.description
                 }</div>
               </li>
@@ -53,7 +53,7 @@ const ProductScreen = {
           <div class="details-action">
             <ul>
               <li>
-                Price: $${product.price}
+                Price: ${product.price} €
               </li>
               <li>
                 Status : 

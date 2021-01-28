@@ -86,6 +86,7 @@
 .product-rating,
 .product-description {
  padding: 8px 0px;
+ line-height: 25px;
 }
 
 /* Product Details */
@@ -127,7 +128,7 @@
 
 .details-info li,
 .details-action li {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .details-action {
@@ -139,4 +140,8 @@
 
 .back-to-result {
     margin: 25px 0px;
+}
+
+.title-product {
+    border-bottom: 1px solid #f08040;
 }

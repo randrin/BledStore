@@ -82,3 +82,13 @@
 .menu-brand a:hover .cart-items {
     background: #ffffff !important;
 }
+
+.cart-empty {
+    margin: 25px 0px;
+    text-align: center;
+}
+
+.cart-empty .cart-empty-icon {
+    font-size: 100px;
+    color: #f08040;
+}

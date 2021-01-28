@@ -71,7 +71,7 @@ const CartScreen = {
       </li>
       ${
         cartItems.length === 0
-          ? '<div>Cart is empty. <a href="/#/">Go Shopping</a>'
+          ? '<div class="cart-empty"><i class="cart-empty-icon fa fa-shopping-cart"></i><h2>Cart is empty. </h2><a href="/#/">Go Shopping <i class="fa fa-angle-right"></i></a></div>'
           : cartItems
               .map(
                 (item) => `
@@ -95,12 +95,12 @@ const CartScreen = {
               )}  
               </select>
               <button type="button" class="delete-button" id="${item.product}">
-                Delete
+                <i class="fa fa-remove error"></i> Delete
               </button>
             </div>
           </div>
           <div class="cart-price">
-            $${item.price}
+            ${item.price} €
           </div>
         </li>
         `
@@ -113,7 +113,7 @@ const CartScreen = {
       <h3>
         Subtotal (${cartItems.reduce((a, c) => a + c.qty, 0)} items)
         :
-        $${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+        ${cartItems.reduce((a, c) => a + c.price * c.qty, 0)} €
       </h3>
       ${
         cartItems.length === 0
