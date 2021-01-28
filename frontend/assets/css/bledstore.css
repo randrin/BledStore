@@ -136,13 +136,10 @@ button.primary:hover {
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-.overlay.active .loading-icon {
-    background-image: url('../images/loading.gif');
-    background-repeat: no-repeat;
+.overlay.active img {
     display: flex;
     z-index: 1000;
-    top: 50%;
-    left: 50%;
+    position: absolute;
     justify-content: center;
     align-items: center;
 }
@@ -196,7 +193,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 60px;
+    height: 75px;
 }
 
 main {

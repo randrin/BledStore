@@ -54,5 +54,5 @@ app.use((error, req, res, next) => {
 });
 
 app.listen(config.PORT, () => {
-  console.log("Server started at http://localhost:5000");
+  console.log(`Server started at http://localhost:${config.PORT}`);
 });
