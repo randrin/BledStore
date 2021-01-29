@@ -8,7 +8,10 @@ export const generateToken = (user) => {
         email: user.email,
         isAdmin: user.isAdmin
     },
-    config.JWT_SECRET)
+    config.JWT_SECRET,
+    {
+      expiresIn: config.JWT_EXPIRE,
+    })
 }
 
 export const isAuth = (req, res, next) => {
