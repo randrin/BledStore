@@ -21,7 +21,7 @@ const convertCartToOrder = () => {
   if (!payment.paymentMethod) {
     document.location.hash = "/payment";
   }
-  const itemsPrice = orderItems.reduce((a, c) => a + c.price * c.qty, 0);
+  const itemsPrice = orderItems.reduce((a, c) => a + (c.discountPrice ? c.discountPrice : c.price) * c.qty, 0);
   const shippingPrice = itemsPrice > 100 ? 0 : 10;
   const taxPrice = Math.round(0.15 * itemsPrice) / 100;
   const totalPrice = itemsPrice + shippingPrice + taxPrice;
@@ -106,7 +106,7 @@ const PlaceOrderScreen = {
                       </div>
                       <div> Qty: ${item.qty} </div>
                     </div>
-                    <div class="cart-price">${item.price} €</div>
+                    <div class="cart-price">${item.discountPrice ? `<span>${item.discountPrice} €</span><span class="product-old-price">${item.price} €</span>` : `<span>${item.price} €</span>`}</div>
                   </li>
                   `
                   )

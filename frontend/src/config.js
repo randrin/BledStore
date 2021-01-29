@@ -50,6 +50,7 @@ export const modalMessage = {
   IMAGE: "Image",
   DESCRIPTION: "Description",
   PRICE: "Price",
+  DISCOUNT_PRICE: "Discount Price",
   ACTIONS: "Actions",
   CREATE: "Create",
   UPDATE: "Update",

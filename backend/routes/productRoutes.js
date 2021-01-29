@@ -28,8 +28,12 @@ productRouter.post(
       brand: req.body.brand,
       image: req.body.image,
       price: req.body.price,
+      discountPrice: req.body.price,
       countInStock: req.body.countInStock,
     });
+    if (product.price < product.discountPrice) {
+      res.status(400).send({ message: "Discount price is greater than price" });
+    }
     const createdProduct = await product.save();
     if (createdProduct) {
       res.status(201).send({
@@ -78,15 +82,22 @@ productRouter.put(
       product.brand = req.body.brand;
       product.image = req.body.image;
       product.price = req.body.price;
+      product.discountPrice = req.body.discountPrice;
       product.countInStock = req.body.countInStock;
-      const productUpdated = await product.save();
-      if (productUpdated) {
-        res.send({
-          message: "Product Updated successfully.",
-          product: productUpdated,
-        });
+      if (product.price < product.discountPrice) {
+        res
+          .status(400)
+          .send({ message: "Discount price is greater than price" });
       } else {
-        res.status(500).send({ message: "Error in updating product" });
+        const productUpdated = await product.save();
+        if (productUpdated) {
+          res.send({
+            message: "Product Updated successfully.",
+            product: productUpdated,
+          });
+        } else {
+          res.status(500).send({ message: "Error in updating product" });
+        }
       }
     } else {
       res.status(404).send({ message: "Product not Found" });

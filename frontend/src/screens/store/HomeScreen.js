@@ -20,6 +20,7 @@ const HomeScreen = {
             (product) => `
               <li>
               <div class="card-product product">
+                ${product.discountPrice ? '<span class="card-product-label label-circle label-sale">Sale</span>' : ''}
                 <a href="/#/product/${product._id}">
                   <img src="${product.image}" alt="${product.name}" />
                 </a>
@@ -35,7 +36,11 @@ const HomeScreen = {
                 </div>
                 <div class="product-brand">${product.brand}</div>
                 <div class="product-description">${product.description.length > 30 ?  product.description.substring(0, 30) + '...' : product.description}</div>
-                <div class="product-price">${product.price} €</div>
+                ${product.discountPrice ? 
+                  `<div class="product-price-content">
+                    <div class="product-price">${product.discountPrice} €</div>
+                    <div class="product-discount-price">${product.price} €</div>
+                </div>` : `<div class="product-price">${product.price} €</div>`}
                 </div>
                 <a href="/#/product/${product._id}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to Cart</a>
               </div>

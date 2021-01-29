@@ -45,6 +45,7 @@ export const createProduct = async () => {
 export const productCreate = async ({
   name,
   price,
+  discountPrice,
   image,
   brand,
   countInStock,
@@ -63,6 +64,7 @@ export const productCreate = async ({
       data: {
         name,
         price,
+        discountPrice,
         image,
         brand,
         countInStock,
@@ -106,6 +108,7 @@ export const productUpdate = async ({
   _id,
   name,
   price,
+  discountPrice,
   image,
   brand,
   countInStock,
@@ -125,6 +128,7 @@ export const productUpdate = async ({
       data: {
         name,
         price,
+        discountPrice,
         image,
         brand,
         countInStock,

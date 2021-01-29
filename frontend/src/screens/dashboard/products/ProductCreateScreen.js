@@ -18,6 +18,7 @@ const ProductCreateScreen = {
         const data = await productCreate({
           name: document.getElementById("name").value,
           price: document.getElementById("price").value,
+          discountPrice: document.getElementById("discountPrice").value,
           image: document.getElementById("image").value,
           brand: document.getElementById("brand").value,
           countInStock: document.getElementById("countInStock").value,
@@ -64,8 +65,16 @@ const ProductCreateScreen = {
                             <input type="text" name="name" id="name" placeholder="Insert the product name" required />
                         </li>
                         <li>
-                            <label for="price">${modalMessage.PRICE} <span class="form-required">*</span></label>
-                            <input type="number" name="price" id="price" placeholder="Insert the product price" required />
+                        <div class="product-price-content">
+                            <div class="product-price-create">
+                              <label for="price">${modalMessage.PRICE} <span class="form-required">*</span></label>
+                              <input type="number" name="price" id="price" placeholder="Insert the product price" required />
+                            </div>
+                            <div class="product-discountprice-create">
+                              <label for="discountPrice">${modalMessage.DISCOUNT_PRICE} </label>
+                              <input type="number" name="discountPrice" id="discountPrice" placeholder="Insert the discount price" required />
+                            </div>
+                          </div>
                         </li>
                         <li>
                             <label for="image">${modalMessage.IMAGE} <span class="form-required">*</span></label>

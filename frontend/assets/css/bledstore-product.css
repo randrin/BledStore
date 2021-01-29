@@ -13,7 +13,7 @@
     margin: 1rem;
     margin-bottom: 0;
     height: 100%;
-    /* border-top: 0.2rem solid #e0e0e0; */
+    position: relative;
 }
 
 .card-product {
@@ -144,4 +144,72 @@
 
 .title-product {
     border-bottom: 1px solid #f08040;
+}
+
+.product-price-content {
+    display: flex;
+}
+
+.product-price-create,
+.product-discountprice-create {
+    display: grid;
+}
+
+.product-discountprice-create {
+    position: absolute;
+    float: right;
+    right: 25px;
+}
+
+.card-product-label {
+    position: absolute;
+    z-index: 1;
+    top: 3rem;
+    left: 2rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    letter-spacing: -.01em;
+    padding: .5rem .9rem;
+    text-align: center;
+    background-color: #d12420;
+    color: #fff;
+}
+
+.details-image .card-product-label {
+    top: 10rem;
+    left: 5rem;
+}
+
+.card-product-label.label-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4.6rem;
+    height: 4.6rem;
+    min-width: 0;
+    border-radius: 50%;
+    line-height: 1;
+}
+
+.product-discount-price {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #cccccc;
+    text-decoration: line-through;
+    padding: 8px 0px 8px 10px;
+    line-height: 25px;
+}
+
+.product-price-content {
+    display: flex;
+}
+
+.product-price-content .product-price {
+    color: #d12420;
+}
+
+.product-old-price {
+    color: #cccccc;
+    text-decoration: line-through;
+    margin-left: 5px;
 }

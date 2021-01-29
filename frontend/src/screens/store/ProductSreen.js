@@ -6,7 +6,9 @@ const ProductScreen = {
   after_render: () => {
     const request = parseRequestUrl();
     document.getElementById("add-button").addEventListener("click", () => {
+     
       document.location.hash = `/cart/${request.id}`;
+      window.location.reload();
     });
   },
   render: async () => {
@@ -23,6 +25,7 @@ const ProductScreen = {
         </div>
         <div class="details">
           <div class="details-image">
+          ${product.discountPrice ? '<span class="card-product-label label-circle label-sale">Sale</span>' : ''}
             <img src="${product.image}" alt="${product.name}"/>
           </div>
           <div class="details-info">
@@ -38,7 +41,7 @@ const ProductScreen = {
                 })}
               </li>
               <li>
-                <span class="title-product">Price: </span><strong>${product.price} €</strong>
+                <span class="title-product">Price: </span>${product.discountPrice ? `<strong>${product.discountPrice} €</strong> <strong class="product-old-price">${product.price} €</strong>` : `<strong>${product.price} €</strong>`}
               </li>
               <li>
                 <span class="title-product">Brand: </span><span>${product.brand}</span>
@@ -53,7 +56,7 @@ const ProductScreen = {
           <div class="details-action">
             <ul>
               <li>
-                Price: ${product.price} €
+                Price: <strong class="error">${product.discountPrice ? product.discountPrice : product.price} €</strong>
               </li>
               <li>
                 Status : 
