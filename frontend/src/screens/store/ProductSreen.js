@@ -62,7 +62,7 @@ const ProductScreen = {
                 Status : 
                   ${
                     product.countInStock > 0
-                      ? `<span class="success">In Stock</span>`
+                      ? `<span class="success">${product.countInStock <= 5 ? `Available only ${product.countInStock}` : 'In Stock'}</span>`
                       : `<span class="error">Unavailable</span>`
                   }
               </li>

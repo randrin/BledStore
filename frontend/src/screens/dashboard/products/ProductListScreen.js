@@ -70,7 +70,7 @@ const ProductListScreen = {
             <tr>
               <th>${modalMessage.ID_PRODUCT}</th>
               <th>${modalMessage.NAME_PRODUCT}</th>
-              <th>${modalMessage.PRICE}</th>
+              <th>${modalMessage.PRICE} (${modalMessage.CURRENCY})</th>
               <th>${modalMessage.CATEGORY}</th>
               <th>${modalMessage.BRAND}</th>
               <th class="tr-action">${modalMessage.ACTIONS}</th>
@@ -83,7 +83,7 @@ const ProductListScreen = {
             <tr>
               <td>${product._id}</td>
               <td>${product.name}</td>
-              <td>${product.price} ${modalMessage.CURRENCY}</td>
+              <td>${product.discountPrice ? `<span>${product.discountPrice}</span><span class="product-old-price">${product.price}</span>` : product.price}</td>
               <td>${product.category}</td>
               <td>${product.brand}</td>
               <td>
