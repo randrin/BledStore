@@ -96,7 +96,7 @@ orderRouter.put(
         paymentID: req.body.paymentID,
       };
       const updatedOrder = await order.save();
-      res.send({ message: "Order Paid successfully.", order: updatedOrder });
+      res.status(200).send({ message: "Order Paid successfully.", order: updatedOrder });
     } else {
       res.status(404).send({ message: "Order Not Found" });
     }

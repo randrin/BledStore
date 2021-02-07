@@ -91,7 +91,7 @@ productRouter.put(
       } else {
         const productUpdated = await product.save();
         if (productUpdated) {
-          res.send({
+          res.status(200).send({
             message: "Product Updated successfully.",
             product: productUpdated,
           });
